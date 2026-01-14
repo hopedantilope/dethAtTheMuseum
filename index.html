@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Death at the Museum - Medical History Exhibition</title>
+  
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/header.css" />
+  <link rel="stylesheet" href="css/menu.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/exhibit-nav.css" />
+  <link rel="stylesheet" href="css/heart-viewer.css" />
+  <link rel="stylesheet" href="css/accessibility.css" />
+  <link rel="stylesheet" href="css/home-background.css" />
+</head>
+
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header Bar -->
+  <header class="top-bar">
+    <a href="#" class="logo" onclick="showPage('home'); return false;">
+      <img src="images/logo.png" alt="PT Logo" class="logo-img" />
+    </a>
+    <div class="top-bar-right">
+      <button class="icon-btn search-btn" aria-label="Search">
+        <img src="images/spyglass.png" alt="" class="icon-img" />
+      </button>
+      <button class="icon-btn menu-btn" aria-label="Open menu" onclick="toggleMainMenu()">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main Menu Overlay -->
+  <div id="mainMenu" class="main-menu-overlay">
+    <div class="main-menu-header">
+      <button class="icon-btn search-btn" aria-label="Search">
+        <span class="search-text">Search</span>
+        <img src="images/spyglass.png" alt="" class="icon-img" />
+      </button>
+      <button class="menu-label" onclick="toggleMainMenu()">
+        <span>Menu</span>
+        <span class="hamburger-icon">
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span>
+        </span>
+      </button>
+    </div>
+    
+    <nav class="main-menu-nav">
+      <a href="#" class="menu-item" onclick="showPage('home'); toggleMainMenu(); return false;">Home</a>
+      <a href="#" class="menu-item" onclick="showPage('disclaimer'); toggleMainMenu(); return false;">Before visiting</a>
+      <button class="menu-item menu-expandable" onclick="toggleSubmenu(this)">
+        The collection
+        <span class="expand-arrow">›</span>
+      </button>
+      <div class="submenu">
+        <a href="#" onclick="showExhibit('heart','medical'); toggleMainMenu(); return false;">Heart</a>
+        <a href="#" onclick="showExhibit('skeleton','medical'); toggleMainMenu(); return false;">Skeleton</a>
+        <a href="#" onclick="showExhibit('respiratory','medical'); toggleMainMenu(); return false;">Respiratory</a>
+        <a href="#" onclick="showExhibit('nerve','medical'); toggleMainMenu(); return false;">Nerve</a>
+        <a href="#" onclick="showExhibit('muscle','medical'); toggleMainMenu(); return false;">Muscle</a>
+        <a href="#" onclick="showExhibit('fetus','medical'); toggleMainMenu(); return false;">Fetus</a>
+      </div>
+      
+      <a href="#" class="menu-item" onclick="showPage('contact'); toggleMainMenu(); return false;">Contact Us</a>
+    </nav>
+  </div>
+
+  <div class="container" id="main-content">
+    <div id="home" class="page-content active">
+      <div class="home-background">
+        <img src="images/hand.jpg" alt="" class="bg-hand" />
+        <img src="images/flower.jpg" alt="" class="bg-flower" />
+        <img src="images/skeleton.jpg" alt="" class="bg-skeleton" />
+      </div>
+      
+      <div class="home-text">
+        <p class="home-quote">"The meaning of life is that it stops"<br>–Franz Kafka</p>
+        <h1 class="home-title">Please Trespass</h1>
+        <p class="home-subtitle">The Anatomical Collection</p>
+      </div>
+
+    </div>
+    <div id="heart" class="page-content" data-exhibit="heart">
+
+      <div id="heart-medical" class="exhibit-panel active">
+        <div class="section">
+          <h2>Heart Exhibition</h2>
+          <p>Living hearts beat for those already silenced. The present was always meant to be the hereafter. We remember better than we see - and we shall gladly remember for you.</p>
+          <div class="heart-viewer">
+            <canvas id="heartCanvas" aria-label="Interactive 3D heart viewer"></canvas>
+          </div>  
+        </div>
+        <div class="section">
+          <h2>Anatomy – What are the heart´s parts?</h2>
+          <p>The heart is an organ that is part of the cardiovascular system, which also includes arteries and veins. The heart is connected to both the pulmonary and systemic blood circulation. In humans, the heart is divided into four chambers: the upper left and right atria and the lower left and right ventricles. The heart also consists of valves, which in a healthy heart ensure one-directional blood flow and prevent backflow. Another form of protection for the heart is the pericardium, which encloses the entire organ. The wall of the heart is composed of three layers: the epicardium, myocardium, and endocardium.</p>
+        </div>
+        <div class="section">
+          <h2>Physiology – How your hearth works?</h2>
+          <p>The heart is connected to the pulmonary and systemic circulation systems, both of which have different but equally important functions. The main function of the heart is to pump oxygenated blood throughout the body and deliver not only oxygen, but also nutrients and hormones.</p>
+        </div>
+        <div class="section">
+          <h2>Pulmonary Circulation – How and why does the blood flow to the lungs from the heart?</h2>
+          <p>The pulmonary circulation is the connection between the heart and the lungs. In humans, deoxygenated blood from the entire body enters the heart through the superior and inferior vena cava and flows into the right atrium. From the right atrium, the deoxygenated blood is pumped into the right ventricle and then sent through the pulmonary circulation to the lungs. In the lungs, the blood receives oxygen and, in its oxygenated form, flows back to the heart into the left atrium. From this point onward, the blood enters the systemic circulation.</p>
+        </div>
+        <div class="section">
+          <h2>Systematic Circulation - How and why does the blood flow to the whole body from the heart?</h2>
+          <p>Oxygenated blood from the lungs enters the heart through the left atrium and is then pumped into the left ventricle. The left ventricle generates high blood pressure, allowing the blood to be pumped through the aorta to the entire body. The function of oxygenated blood is to flow through arteries and arterioles and deliver oxygen to all parts of the body. Oxygen is carried by red blood cells through the hemoglobin molecule. In the tissues, oxygen is delivered to the cells, while carbon dioxide moves from the tissues into the blood, causing the blood to become deoxygenated again. The deoxygenated blood then flows back to the heart through venules and veins, which connect to the superior and inferior vena cava, and enters the heart through the right atrium. This cycle repeats continuously.</p>
+        </div>
+        <div class="section">
+          <h2>Cardiac conduction system - What is the principle of your heart beating constantly?</h2>
+          <p>The rhythm of the heartbeat, whether it is about 60 beats per minute at rest or up to 130 beats per minute during physical activity, is regulated by electrical signals within the heart. The signal is generated by the sinoatrial node, which is made of the pacemaker cells and therefore it is called the heart´s pacemaker. These calles produce an electrical impulse, which travels through the electrical cardiac conduction system of the heart, causing it to contract and pump the blood to the whole body.</p>
+        </div>
+        <div class="section">
+          <h2>Heart disease</h2>
+          <p>The heart is part of the cardiovascular system, which includes the heart, arteries, veins, and capillaries. Cardiovascular diseases (CVDs) are a group of diseases, which affect the heart and blood vessels. According to the World Health Organization (WHO), cardiovascular diseases (CVDs) are the leading cause of death worldwide. CVDs account for an estimated 19.8 million deaths each year (data from 2022). More than four out of five CVD-related deaths are caused by heart attacks and strokes, and one third of these deaths occur prematurely in people under 70 years of age. Besides the CVDs heart can also suffer from other diseases including: heart valve disorder (failure of a valve to close completely), arrhythmias (irregular rhythms), heart failure (poor pumping), congenital heart defect.</p>
+        </div>
+        <div class="section">
+          <h2>Heart attacks (Myocardial infarction)</h2>
+          <p>The heart muscle itself is nourished by oxygenated blood supplied through the coronary arteries. If blood flow in one of these arteries decreases significantly or stops completely, it can cause an infarction (tissue death) of the heart muscle.</p>
+          <p>The first phase occurs when the coronary arteries become damaged due to various risk factors. These risk factors include high blood pressure, smoking, diabetes, lack of physical activity, obesity, high blood cholesterol, poor diet, and excessive alcohol intake. Over time, these factors damage the coronary arteries.</p>
+          <p>In the next phase, the body attempts to repair the damaged arteries. Blood cell fragments called platelets attach to the damaged area of the artery and may clump together to form blood clots. If a clot becomes large enough, it can partially or completely block blood flow through a coronary artery and cause a heart attack.</p>
+        </div>
+        <div class="section">
+          <h2>Symptoms of heart attack</h2>
+          <p>Symptoms of heart attack can include pain or discomfort in the centre of the chest and/or in the arms, left shoulder, elbows, jaw or back. Moreover, the person may experience difficulty in breathing or shortness of breath, nausea, vomiting, light-headedness, faintness, a cold sweat and turning pale. Women are more likely than men to have shortness of breath, nausea, vomiting, and back or jaw pain. People experiencing these symptoms should seek medical care immediately.</p>
+        </div>
+        <div class="section">
+          <h2>Prevention of disease – What can you do to reduce the risk of cardiovascular disease?</h2>
+          <p>It has been shown that not using tobacco, avoiding harmful alcohol consumption, reducing salt intake, eating more fruits and vegetables, and maintaining regular physical activity can reduce the risk of cardiovascular disease. It is also important to keep in mind that cardiovascular diseases are influenced by environmental and hereditary factors as well.</p>
+        </div>
+        <div class="section">
+          <h2>More information about hearth attack, risk factors and prevention:</h2>
+          <p></p>
+        </div>
+<div class="section">
+  <div class="section-header">
+    <h2>Anatomy – What are the heart's parts?</h2>
+    <span class="section-toggle" aria-hidden="true"></span>
+  </div>
+  <div class="section-content">
+    <p>The heart is an organ that is part of the cardiovascular system...</p>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-header">
+    <h2>Physiology – How your heart works?</h2>
+    <span class="section-toggle" aria-hidden="true"></span>
+  </div>
+  <div class="section-content">
+    <p>The heart is connected to the pulmonary and systemic circulation systems...</p>
+  </div>
+</div>
+      </div>
+
+      <div id="heart-history" class="exhibit-panel">
+        <div class="section">
+          <h2>Medical history</h2>
+          <p>A 60-year-old man. 
+He works as a plumber. His father died from heart disease, and his brother has angina. He used to smoke but stopped 5 years ago. He was admitted to the hospital because doctors thought he might be having a heart attack. He woke up during the night with strong chest pain behind the breastbone. After being admitted, he developed fluid in the lungs. Later, his heart went into a dangerous rhythm (ventricular fibrillation) and then stopped beating (asystole). </p>
+        </div>
+      </div>
+
+      <div id="heart-disease" class="exhibit-panel">
+        <div class="section">
+          <h2>Heart — Story</h2>
+          <p>I am just the heart, but it doesn't beat anymore. I just used to smoke, but I don't smoke anymore. They told me, as I now tell you, that smoking eventually ends you! – like making that red-beating heart fall silent. How much does each cigarette shorten life? 20 minutes. I started smoking at 15 and quit at 55. That's 40 years of cigarettes. How many cigarettes did I smoke on average each day? Hmm, say about 20 a day then. 20 * 20 = 400 minutes a day. In that sense, I shortened my life by 6,6 hours every day. I died later, of a heart attack, at 60, even after 5 years smoke-free. Was it worth it? No way, but at the same time: smoking isn't just smoking, you know? What made me smoke? What did smoking mean to me? Listen: I think we live in a society where who and what you're not is more important than what you are. I don't smoke, I don't eat candy on weekdays, I'm not a guy who doesn't donate organs, I don't skip the bus fare, I'm not boisterous, I don't swallow gum, I don't leave food on my plate even when I'm full – I am not. Not not, not? So how hard was my heart really beating while it was still beating? Maybe smoking was the last beat in a sea of no-beat. I am a smoker. Not someone who doesn't not smoke, but a smoker. That idea makes me smile - sadly, but still. Why did I choose to quit at 55? I have, in a way, always surrendered; I’ve always been a body with parts that others can't get enough of. I surrendered to the plumbing trade, to the place where my wife wanted to live, and now I have surrendered my organs to you. At last I even surrendered smoking. The transition isn't that great, if you know what I mean? Still: I am not a person who doesn't donate his organs. It’s strange, isn't it?</p>
+        </div>
+      </div>
+
+      <div id="heart-reflections" class="exhibit-panel">
+        <div class="section">
+          <h2>Reflections</h2>
+          <p>Will be some sort of questionare?</p>
+        </div>
+      </div>
+    <div id="skeleton" class="page-content">
+      <div class="section">
+        <h2>Skeleton Exhibition</h2>
+        <p>Content coming soon...</p>
+      </div>
+    </div>
+
+    <div id="respiratory" class="page-content">
+      <div class="section">
+        <h2>Respiratory System Exhibition</h2>
+        <p>Content coming soon...</p>
+      </div>
+    </div>
+
+    <div id="nerve" class="page-content">
+      <div class="section">
+        <h2>Nervous System Exhibition</h2>
+        <p>Content coming soon...</p>
+      </div>
+    </div>
+
+    <div id="muscle" class="page-content">
+      <div class="section">
+        <h2>Muscular System Exhibition</h2>
+        <p>Content coming soon...</p>
+      </div>
+    </div>
+
+    <div id="fetus" class="page-content">
+      <div class="section">
+        <h2>Fetal Development Exhibition</h2>
+        <p>Content coming soon...</p>
+      </div>
+    </div>
+
+      <nav class="exhibit-nav" aria-label="Heart subpages">
+        <div class="nav-container">
+          <a href="#" class="exhibit-tab" onclick="showExhibit('heart','medical'); return false;">
+            <div class="tab-icon">
+              <img src="images/icon-health.png" alt="">
+            </div>
+            <span>Health</span>
+          </a>
+          <a href="#" class="exhibit-tab" onclick="showExhibit('heart','disease'); return false;">
+            <div class="tab-icon">
+              <img src="images/icon-disease.png" alt="">
+            </div>
+            <span>Story</span>
+          </a>
+          <a href="#" class="exhibit-tab" onclick="showExhibit('heart','reflections'); return false;">
+            <div class="tab-icon">
+              <img src="images/icon-reflections.png" alt="">
+            </div>
+            <span>Reflections</span>
+          </a>
+          <a href="#" class="exhibit-tab" onclick="showExhibit('heart','history'); return false;">
+            <div class="tab-icon">
+              <img src="images/icon-history.png" alt="">
+            </div>
+            <span>Patient History</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+
+    <div id="disclaimer" class="page-content">
+      <div class="section">
+        <h2>Before visiting</h2>
+        <p>Content coming soon...</p>
+      </div>
+    </div>
+
+    <div id="contact" class="page-content">
+      <div class="section">
+        <h2>Contact Us</h2>
+        <p>Content coming soon...</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/navigation.js"></script>
+  <script src="js/accessibility.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="libs/OrbitControls.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="js/heart-viewer.js"></script>
+  <script src="js/accordion.js"></script>
+</body>
+</html>

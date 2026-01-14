@@ -1,0 +1,37 @@
+/* ===========================
+   Base & Reset Styles
+   =========================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Georgia", serif;
+  background-color: #000000;
+  color: #FFFFFF;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* ===========================
+   Skip Link (Accessibility)
+   =========================== */
+
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #d4a574;
+  color: #000;
+  padding: 8px;
+  z-index: 1000;
+  transition: top 0.3s;
+}
+
+.skip-link:focus {
+  top: 0;
+}

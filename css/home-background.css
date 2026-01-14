@@ -1,0 +1,177 @@
+/* ===========================
+   Home Page Background Images
+   =========================== */
+
+/* Make logo bigger */
+.logo-img {
+  height: 50px !important;
+}
+
+@media (min-width: 768px) {
+  .logo-img {
+    height: 60px !important;
+  }
+}
+
+#home {
+  position: relative;
+  min-height: 100vh;
+}
+
+.home-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 101;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Hand image - centered, slightly right and higher */
+.bg-hand {
+  position: absolute;
+  top: -5%;
+  left: 55%;
+  transform: translateX(-50%);
+  max-width: 450px;
+  width: 45%;
+  height: auto;
+  opacity: 1;
+}
+
+/* Flower image - left side, 1/3 down */
+.bg-flower {
+  position: absolute;
+  top: 33.33%;
+  left: 0;
+  max-width: 350px;
+  width: 30%;
+  height: auto;
+  opacity: 1;
+  z-index: 1;
+}
+
+/* Skeleton image - right side, anchored to bottom */
+.bg-skeleton {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  max-width: 350px;
+  width: 30%;
+  height: auto;
+  opacity: 0.85;
+}
+
+/* ===========================
+   Home Page Text Overlay
+   =========================== */
+
+.home-text {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  z-index: 102;
+  pointer-events: none;
+}
+
+.home-quote {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 25px;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  letter-spacing: 1px;
+}
+
+.home-title {
+  font-family: "Georgia", serif;
+  font-size: 70px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.home-subtitle {
+  font-family: "Georgia", serif;
+  font-size: 23px;
+  color: #fff;
+  letter-spacing: 3px;
+}
+
+/* ===========================
+   Responsive - Mobile
+   =========================== */
+
+@media (max-width: 767px) {
+  /* Hand - much smaller, top center */
+  .bg-hand {
+    width: 45%;
+    max-width: 160px;
+    left: 50%;
+    top: 2%;
+  }
+  
+  /* Flower - left edge, vertically centered */
+  .bg-flower {
+    width: 25%;
+    max-width: 100px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+  
+  /* Skeleton - bottom right corner */
+  .bg-skeleton {
+    width: 45%;
+    max-width: 180px;
+    bottom: 5%;
+    right: 0;
+  }
+  
+  /* Text - centered, smaller fonts */
+  .home-text {
+    top: 50%;
+    width: 90%;
+  }
+  
+  .home-quote {
+    font-size: 13px;
+    padding: 0 10px;
+    margin-bottom: 1rem;
+  }
+  
+  .home-title {
+    font-size: 38px;
+    letter-spacing: 1px;
+  }
+  
+  .home-subtitle {
+    font-size: 13px;
+    letter-spacing: 2px;
+  }
+}
+
+/* ===========================
+   Responsive - Large screens
+   =========================== */
+
+@media (min-width: 1200px) {
+  .bg-hand {
+    max-width: 500px;
+  }
+  
+  .bg-flower {
+    max-width: 450px;
+    width: 25%;
+  }
+  
+  .bg-skeleton {
+    max-width: 450px;
+    width: 25%;
+    bottom: 0;
+  }
+}
