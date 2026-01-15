@@ -32,6 +32,43 @@ document.addEventListener("click", function(e) {
 });
 
 // ===========================
+// Exhibit Navigation Control
+// ===========================
+
+// List of pages that should show the bottom exhibit nav
+const exhibitPages = ['heart', 'skeleton', 'respiratory', 'nerve', 'muscle', 'fetus'];
+
+function updateExhibitNavVisibility(pageId) {
+  const exhibitNav = document.getElementById('exhibitNav');
+  if (!exhibitNav) return;
+  
+  if (exhibitPages.includes(pageId)) {
+    exhibitNav.classList.add('visible');
+  } else {
+    exhibitNav.classList.remove('visible');
+  }
+}
+
+function updateExhibitNavTabs(exhibitId, tab) {
+  const exhibitNav = document.getElementById('exhibitNav');
+  if (!exhibitNav) return;
+  
+  // Update the onclick handlers to point to current exhibit
+  const tabs = exhibitNav.querySelectorAll('.exhibit-tab');
+  tabs.forEach(tabEl => {
+    const panelName = tabEl.getAttribute('data-panel');
+    tabEl.setAttribute('onclick', `showExhibit('${exhibitId}','${panelName}'); return false;`);
+    
+    // Update active state
+    if (panelName === tab) {
+      tabEl.classList.add('active');
+    } else {
+      tabEl.classList.remove('active');
+    }
+  });
+}
+
+// ===========================
 // Page Navigation
 // ===========================
 
@@ -42,10 +79,14 @@ function showPage(pageId, updateHash = true) {
   const selectedPage = document.getElementById(pageId);
   if (selectedPage) selectedPage.classList.add("active");
 
+  // Update exhibit nav visibility
+  updateExhibitNavVisibility(pageId);
+
   if (selectedPage && selectedPage.hasAttribute("data-exhibit")) {
     const exhibitId = selectedPage.getAttribute("data-exhibit");
     if (exhibitId) {
       showExhibit(exhibitId, "medical", false);
+      return; // showExhibit handles the rest
     }
   }
 
@@ -80,13 +121,9 @@ function showExhibit(exhibitId, tab = "medical", updateHash = true) {
     tab = "medical";
   }
 
-  const navLinks = exhibitPage.querySelectorAll(".exhibit-nav .exhibit-tab");
-  navLinks.forEach((a) => a.classList.remove("active"));
-
-  const activeLink = Array.from(navLinks).find((a) =>
-    (a.getAttribute("onclick") || "").includes(`showExhibit('${exhibitId}','${tab}'`)
-  );
-  if (activeLink) activeLink.classList.add("active");
+  // Update exhibit nav visibility and tabs
+  updateExhibitNavVisibility(exhibitId);
+  updateExhibitNavTabs(exhibitId, tab);
 
   if (updateHash) {
     history.replaceState(null, "", `#${exhibitId}/${tab}`);
@@ -97,6 +134,14 @@ function showExhibit(exhibitId, tab = "medical", updateHash = true) {
   if (exhibitId === "heart" && window.__heart3D && typeof window.__heart3D.resize === "function") {
     requestAnimationFrame(() => window.__heart3D.resize());
   }
+  
+  // Re-initialize accordions for the new content
+  if (typeof initAccordions === 'function') {
+    setTimeout(initAccordions, 50);
+  }
+  
+  // Scroll to top
+  window.scrollTo(0, 0);
 }
 
 // ===========================
@@ -172,5 +217,14 @@ document.addEventListener("keydown", (e) => {
 // Initialize
 // ===========================
 
-window.addEventListener("DOMContentLoaded", loadFromHash);
+window.addEventListener("DOMContentLoaded", function() {
+  loadFromHash();
+  
+  // Make sure exhibit nav is hidden on initial load if on home
+  const activePage = document.querySelector('.page-content.active');
+  if (activePage) {
+    updateExhibitNavVisibility(activePage.id);
+  }
+});
+
 window.addEventListener("hashchange", loadFromHash);

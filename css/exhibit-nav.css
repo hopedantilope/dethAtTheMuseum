@@ -12,6 +12,19 @@
   border-top: 2px solid transparent;
   padding: 0.5rem 0.5rem;
   padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+  
+  /* Hidden by default */
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Only show when .visible class is added */
+.exhibit-nav.visible {
+  display: block;
+  opacity: 1;
+  visibility: visible;
 }
 
 .exhibit-nav .nav-container {
@@ -28,7 +41,7 @@
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #d4a574;
+  color: #888;
   font-size: 0.7rem;
   font-family: "Georgia", serif;
   transition: color 0.3s;
@@ -91,7 +104,8 @@
   line-height: 1.2;
 }
 
-.page-content.active[data-exhibit] {
+/* Add padding to page content when exhibit nav is visible */
+.page-content[data-exhibit].active {
   padding-bottom: calc(100px + env(safe-area-inset-bottom));
 }
 
