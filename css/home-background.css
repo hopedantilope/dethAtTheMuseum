@@ -1,5 +1,5 @@
 /* ===========================
-   Home Page Background Images
+   Home Page - Full Viewport Scroll Sections
    =========================== */
 
 /* Make logo bigger */
@@ -13,18 +13,87 @@
   }
 }
 
-#home {
+/* ===========================
+   Container Override for Home
+   =========================== */
+
+/* When home is active, container needs to be full-width and full-height */
+.container:has(#home.active) {
+  max-width: none;
+  padding: 0;
+  height: calc(100vh - 52px); /* Subtract header height */
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .container:has(#home.active) {
+    height: calc(100vh - 56px); /* Slightly taller header on desktop */
+  }
+}
+
+/* Home page scroll container */
+#home.page-content {
+  padding: 0;
+  margin: 0;
+}
+
+#home.page-content.active {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+#home.page-content::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+#home.page-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Each section snaps to viewport */
+.home-section {
+  width: 100%;
+  height: calc(100vh - 52px);
+  min-height: calc(100vh - 52px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
   position: relative;
-  min-height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .home-section {
+    height: calc(100vh - 56px);
+    min-height: calc(100vh - 56px);
+  }
+}
+
+/* ===========================
+   Section 1: Hero/Intro
+   =========================== */
+
+.home-section--hero {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .home-background {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  z-index: 101;
+  z-index: 1;
   pointer-events: none;
   overflow: hidden;
 }
@@ -69,12 +138,9 @@
    =========================== */
 
 .home-text {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  position: relative;
   text-align: center;
-  z-index: 102;
+  z-index: 2;
   pointer-events: none;
 }
 
@@ -103,11 +169,256 @@
   letter-spacing: 3px;
 }
 
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.7;
+  animation: scrollBounce 2s ease-in-out infinite;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.scroll-indicator span {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  color: #fff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 1.5px solid #fff;
+  border-bottom: 1.5px solid #fff;
+  transform: rotate(45deg);
+  margin-top: -5px;
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+    opacity: 1;
+  }
+}
+
+/* ===========================
+   Section 2: Before Visiting
+   =========================== */
+
+.home-section--visit {
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.visit-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  width: 100%;
+  min-height: 0; /* Important for flex child */
+}
+
+/* Left side - anatomy image */
+.visit-image {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #000;
+}
+
+.visit-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  opacity: 0.9;
+}
+
+/* Right side - text content */
+.visit-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+  background: #0a0a0a;
+}
+
+.visit-text h2 {
+  font-family: "Georgia", serif;
+  font-size: 44px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.25;
+  margin-bottom: 35px;
+  letter-spacing: 0.5px;
+}
+
+.visit-text p {
+  font-family: "Georgia", serif;
+  font-size: 17px;
+  color: #999;
+  line-height: 1.8;
+  margin-bottom: 50px;
+  max-width: 480px;
+}
+
+.visit-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-family: "Georgia", serif;
+  font-size: 18px;
+  color: #fff;
+  text-decoration: none;
+  padding-top: 25px;
+  border-top: 1px solid #333;
+  transition: gap 0.3s ease;
+  max-width: fit-content;
+}
+
+.visit-link:hover {
+  gap: 30px;
+}
+
+.visit-link .arrow {
+  font-size: 24px;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.visit-link:hover .arrow {
+  transform: translateX(5px);
+}
+
+/* Footer within visit section */
+.visit-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #000;
+  border-top: 1px solid #1a1a1a;
+  flex-shrink: 0;
+}
+
+.footer-info {
+  padding: 25px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.footer-info p {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 13px;
+  color: #777;
+  margin: 0;
+}
+
+.footer-info p span {
+  display: inline-block;
+  min-width: 90px;
+  color: #555;
+}
+
+.footer-info a {
+  color: #777;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-info a:hover {
+  color: #fff;
+}
+
+.footer-map {
+  background: #1a1a1a;
+  min-height: 160px;
+}
+
+.footer-map img,
+.footer-map iframe {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: 0;
+  display: block;
+}
+
+/* Map placeholder styling */
+.map-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 160px;
+  background: linear-gradient(135deg, #1a1a1a 0%, #252525 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #444;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+}
+
+/* ===========================
+   Responsive - Tablet
+   =========================== */
+
+@media (max-width: 1024px) {
+  .visit-text {
+    padding: 40px 50px;
+  }
+  
+  .visit-text h2 {
+    font-size: 34px;
+  }
+  
+  .visit-text p {
+    font-size: 15px;
+  }
+  
+  .visit-link {
+    font-size: 16px;
+  }
+}
+
 /* ===========================
    Responsive - Mobile
    =========================== */
 
 @media (max-width: 767px) {
+  /* Ensure container is full on mobile */
+  .container:has(#home.active) {
+    height: calc(100vh - 52px);
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .home-section {
+    height: calc(100vh - 52px);
+    min-height: calc(100vh - 52px);
+  }
+  
+  /* Hero section mobile */
+  .home-section--hero {
+    padding-top: 0;
+  }
+  
   /* Hand - much smaller, top center */
   .bg-hand {
     width: 45%;
@@ -129,20 +440,20 @@
   .bg-skeleton {
     width: 45%;
     max-width: 180px;
-    bottom: 5%;
+    bottom: 15%;
     right: 0;
   }
   
   /* Text - centered, smaller fonts */
   .home-text {
-    top: 50%;
     width: 90%;
+    padding: 0 20px;
   }
   
   .home-quote {
     font-size: 13px;
     padding: 0 10px;
-    margin-top: 240px;
+    margin-top: 20px;
   }
   
   .home-title {
@@ -153,6 +464,74 @@
   .home-subtitle {
     font-size: 13px;
     letter-spacing: 2px;
+  }
+  
+  .scroll-indicator {
+    bottom: 25px;
+  }
+  
+  .scroll-indicator span {
+    font-size: 10px;
+  }
+  
+  .scroll-arrow {
+    width: 16px;
+    height: 16px;
+  }
+  
+  /* Visit section - single column, no images */
+  .visit-content {
+    grid-template-columns: 1fr;
+  }
+  
+  .visit-image {
+    display: none;
+  }
+  
+  .visit-text {
+    padding: 60px 25px 30px;
+    justify-content: flex-start;
+    flex: 1;
+  }
+  
+  .visit-text h2 {
+    font-size: 28px;
+    margin-bottom: 25px;
+    line-height: 1.3;
+  }
+  
+  .visit-text p {
+    font-size: 14px;
+    line-height: 1.7;
+    margin-bottom: 30px;
+    color: #888;
+  }
+  
+  .visit-link {
+    font-size: 14px;
+    padding-top: 18px;
+    gap: 15px;
+  }
+  
+  /* Footer stacked on mobile */
+  .visit-footer {
+    grid-template-columns: 1fr;
+  }
+  
+  .footer-info {
+    padding: 20px 25px;
+  }
+  
+  .footer-info p {
+    font-size: 12px;
+  }
+  
+  .footer-info p span {
+    min-width: 80px;
+  }
+  
+  .footer-map {
+    min-height: 140px;
   }
 }
 
@@ -174,5 +553,36 @@
     max-width: 450px;
     width: 25%;
     bottom: 0;
+  }
+  
+  .visit-text {
+    padding: 80px 100px;
+  }
+  
+  .visit-text h2 {
+    font-size: 52px;
+  }
+  
+  .visit-text p {
+    font-size: 18px;
+    max-width: 520px;
+  }
+  
+  .visit-link {
+    font-size: 20px;
+  }
+}
+
+/* ===========================
+   Extra large screens
+   =========================== */
+
+@media (min-width: 1600px) {
+  .visit-text {
+    padding: 100px 140px;
+  }
+  
+  .visit-text h2 {
+    font-size: 58px;
   }
 }

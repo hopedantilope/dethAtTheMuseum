@@ -14,6 +14,9 @@
   <link rel="stylesheet" href="css/heart-viewer.css" />
   <link rel="stylesheet" href="css/accessibility.css" />
   <link rel="stylesheet" href="css/home-background.css" />
+  <link rel="stylesheet" href="css/prep.css" />
+  <link rel="stylesheet" href="css/virtual-tour.css" />
+  <link rel="stylesheet" href="css/interactive-map.css" />
 </head>
 
 <body>
@@ -76,17 +79,68 @@
 
   <div class="container" id="main-content">
     <!-- ==================== HOME PAGE ==================== -->
+    <!-- ==================== HOME PAGE ==================== -->
+    <!-- Replace your existing #home div with this -->
     <div id="home" class="page-content active">
-      <div class="home-background">
-        <img src="images/hand.jpg" alt="" class="bg-hand" />
-        <img src="images/flower.jpg" alt="" class="bg-flower" />
-        <img src="images/skeleton.jpg" alt="" class="bg-skeleton" />
-      </div>
-      <div class="home-text">
-        <h1 class="home-title">Please Trespass</h1>
-        <p class="home-subtitle">The Anatomical Collection</p>
-        <p class="home-quote">"The meaning of life is that it stops"<br>–Franz Kafka</p>
-      </div>
+
+      <!-- Section 1: Hero -->
+      <section class="home-section home-section--hero">
+        <div class="home-background">
+          <img src="images/hand.jpg" alt="" class="bg-hand" />
+          <img src="images/flower.jpg" alt="" class="bg-flower" />
+          <img src="images/skeleton.jpg" alt="" class="bg-skeleton" />
+        </div>
+        <div class="home-text">
+          <h1 class="home-title">Please Trespass</h1>
+          <p class="home-subtitle">The Anatomical Collection</p>
+          <p class="home-quote">"The meaning of life is that it stops"<br>–Franz Kafka</p>
+        </div>
+        <div class="scroll-indicator"
+          onclick="document.querySelector('.home-section--visit').scrollIntoView({behavior: 'smooth'})">
+          <span>Scroll</span>
+          <div class="scroll-arrow"></div>
+        </div>
+      </section>
+
+      <!-- Section 2: Before Visiting -->
+      <section class="home-section home-section--visit">
+        <div class="visit-content">
+          <!-- Left: Anatomy Image -->
+          <div class="visit-image">
+            <!-- Replace with your actual image -->
+            <img src="images/bodyHome.png" alt="Anatomical specimen display" />
+          </div>
+
+          <!-- Right: Text Content -->
+          <div class="visit-text">
+            <h2>Will You Be Visiting the Museum in Person Soon?</h2>
+            <p>The museum contains real human remains used in medical education. We encourage quiet, respectful
+              behaviour and emotional awareness while visiting the museum. If you at any point feel unwell or
+              overwhelmed, don't hesitate to step out.</p>
+            <a href="#" class="visit-link" onclick="showPage('disclaimer'); return false;">
+              Read about how to prepare and ethical guidelines
+              <span class="arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Footer with contact info -->
+        <div class="visit-footer">
+          <div class="footer-info">
+            <p><span>Address:</span> Erling Skjalgssons gate 1</p>
+            <p><span>Phone:</span> <a href="tel:72573100">72 57 31 00</a></p>
+            <p><span>Email:</span> <a href="mailto:info@ntnu.no">info@ntnu.no</a></p>
+          </div>
+          <div class="footer-map">
+            <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
+              referrerpolicy="no-referrer-when-downgrade"
+              src="https://www.google.com/maps?q=63.41949,10.39078&z=17&output=embed">
+            </iframe>
+
+          </div>
+        </div>
+      </section>
+
     </div>
     <!-- ==================== HEART EXHIBIT ==================== -->
     <div id="heart" class="page-content" data-exhibit="heart">
@@ -309,7 +363,6 @@
                 plumbing trade, to the place where my wife wanted to live, and now I have surrendered my organs to you.
                 At last I even surrendered smoking. The transition isn't that great, if you know what I mean? Still: I
                 am not a person who doesn't donate his organs. It's strange, isn't it?</p>
-                <img src="images/heart-anatomy.jpg" alt="Diagram showing the four chambers of the heart">
             </div>
           </div>
         </div>
@@ -639,18 +692,285 @@
     </div>
 
     <!-- ==================== STATIC PAGES ==================== -->
+    <!-- ==================== BEFORE VISITING PAGE ==================== -->
+    <!-- Replace your existing #disclaimer div with this -->
+    <!-- ==================== BEFORE VISITING PAGE ==================== -->
     <div id="disclaimer" class="page-content">
+
+      <!-- Introduction Section -->
       <div class="section">
-        <h2>Before visiting</h2>
-        <p>Content coming soon...</p>
+        <h2>Before You Visit</h2>
+        <p>The museum contains real human remains used in medical education. We encourage quiet, respectful behaviour
+          and emotional awareness while visiting. If you at any point feel unwell or overwhelmed, don't hesitate to step
+          out.</p>
+        <p>Understanding how our specimens are prepared can help you appreciate the scientific and artistic processes
+          involved in preserving the human body for education.</p>
+      </div>
+
+      <!-- Plastination Section -->
+      <div class="section collapsible expanded">
+        <div class="section-header">
+          <h2>Plastination</h2>
+          <span class="section-toggle" aria-hidden="true"></span>
+        </div>
+
+        <div class="section-content">
+          <div class="section-content-inner">
+            <p>The Plastination technique was created by Gunther von Hagen at the University of Heidelberg in 1977. The
+              technique has gained worldwide acceptance and has been in use for over 40 years. It preserves anatomical
+              specimens in such a way that they become durable, dry and odourless, while still retaining a naturalistic
+              look. Plastinated organs are important educational tools for students.</p>
+
+            <p>The specimens go through a lengthy process of <strong>fixation</strong>, <strong>dehydration</strong>,
+              <strong>forced impregnation</strong> and <strong>curing</strong>.
+            </p>
+
+            <h3 class="prep-subheading">Step 1: Fixation</h3>
+            <p>The specimen is fixed to stop putrefaction (decay). This is usually done by using formaldehyde solutions,
+              such as formalin. Formalin fixes the tissue, which means it stops decomposition and keeps cells stable,
+              disinfects and hardens the tissue.</p>
+
+            <h3 class="prep-subheading">Step 2: Dehydration</h3>
+
+            <!-- Dehydration diagram - floated RIGHT like in PDF -->
+            <div class="prep-image-right prep-invert">
+              <img src="images/prep-dehydration.png"
+                alt="Diagram showing dehydration and defatting process with acetone baths" />
+            </div>
+
+            <p>After the specimen is fixed and prepared, it must be dehydrated. This is done through acetone baths,
+              which removes fluid and some fat from the organ. This is done at a cold temperature (-20°C) so that
+              the specimen does not shrink. This process can take from 3 to 6 weeks, where the acetone needs to be
+              changed
+              out around three times.</p>
+
+            <p>For organs where fat removal is necessary, the specimen is kept in an additional acetone bath at room
+              temperature for a period of 3–10 days. This is not done with nervous tissue, such as the brain.</p>
+
+            <h3 class="prep-subheading">Step 3: Forced Impregnation</h3>
+
+            <!-- Forced Impregnation diagram - floated LEFT like in PDF -->
+            <div class="prep-image-right prep-invert">
+              <img src="images/prep-impregnation.png"
+                alt="Diagram showing forced impregnation process with vacuum chamber" />
+            </div>
+
+            <p>This is the central step of plastination. It involves replacing the acetone within the tissue with
+              silicone. A mixture of silicone and curing agent is made and the specimen is placed in the mixture. It
+              stays in this mixture for a few days before a vacuum is applied, which boils the acetone and removes it
+              from the organ, with silicone taking its place. This step takes 2 to 4 weeks.</p>
+
+            <h3 class="prep-subheading">Step 4: Curing</h3>
+
+            <!-- Curing diagram - floated RIGHT like in PDF -->
+            <div class="prep-image-right prep-invert">
+              <img src="images/prep-curing.png" alt="Diagram showing gas cure chamber for hardening and crosslinking" />
+            </div>
+
+            <p>Once the silicone has sufficiently replaced the acetone, the silicone needs to be cured. This is done
+              through gas-curing, where the specimen and the gas hardener is placed in an airtight chamber. While
+              removing excess silicone, the specimen is in the airtight chamber for about 8 to 12 hours. Afterwards, the
+              specimen is slowly hardened in an airtight space for months. It is fully cured in approximately 2-4
+              months.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corrosion Casting Section - Simple float layout like original -->
+      <div class="section collapsible">
+        <div class="section-header">
+          <h2>Corrosion Casting</h2>
+          <span class="section-toggle" aria-hidden="true"></span>
+        </div>
+
+        <div class="section-content">
+          <div class="section-content-inner">
+
+            <!-- Corrosion cast - floated RIGHT -->
+            <div class="prep-corrosion-cast">
+              <img src="images/prep-corrosion-result.png" alt="..." />
+            </div>
+
+            <p>The corrosion casts are made by filling a space with a resin and removing the surrounding tissues,
+              creating a replica of the negative space. This technique is most commonly used in vascular structures
+              (blood vessels) but can be used for many other anatomical systems and structures.</p>
+
+            <h3 class="prep-subheading">Historical Origins</h3>
+
+            <!-- Da Vinci drawing - floated LEFT -->
+            <div class="prep-davinci">
+              <img src="images/prep-davinci.png" alt="..." />
+            </div>
+
+            <p>Casting like this has been around for hundreds of years. One of the earliest documented uses of this
+              technique in anatomy was by Leonardo da Vinci around 1505–1507. Leonardo injected hot bee wax into a
+              bovine brain ventricular system, and scraped away the surrounding tissue, leaving a cast of the
+              ventricles.</p>
+
+            <h3 class="prep-subheading">The Process</h3>
+
+            <p>When creating a vascular corrosion cast, a resin is injected through the specimen's vascular structures.
+              Before casting, the vessels are flushed to ensure that they are free from blockages and blood. The vessels
+              are fixated, ensuring that they do not expand, deform, or leak. This is done by using different solutions
+              of chemicals, such as formaldehyde.</p>
+
+            <p>A special resin is then injected into the vessels at an optimal speed; too fast and the vessels may
+              rupture, too slow and the cast may be incomplete. The resin is then left to harden.</p>
+
+            <p>Once hardened, the vascular tissue is placed in an alkaline solution, dissolving the tissues surrounding
+              the resin. This leaves behind an intricate and detailed cast of the vascular system.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wet Specimens Section -->
+      <div class="section collapsible">
+        <div class="section-header">
+          <h2>Wet Specimens</h2>
+          <span class="section-toggle" aria-hidden="true"></span>
+        </div>
+
+        <div class="section-content">
+          <div class="section-content-inner">
+            <p>A wet specimen is a biological sample (animal, plant, or organ) preserved in a liquid, typically alcohol
+              or formalin, to prevent decay and maintain its form for scientific study or display.</p>
+
+            <h3 class="prep-subheading">Preparation Process</h3>
+            <p>For the preparation of wet specimens, the body parts or organs are collected and fixed properly. Then the
+              specimens are prepared by dissection and kept in a room to dry. The passive drying usually takes one or
+              two days.</p>
+
+            <p>Then the surface of the structure is coloured, to show vessels, nerves, ligaments, muscles, ducts, and
+              glands. The vessels and nerves dry earlier than other structures, therefore the colour is applied on those
+              before other structures.</p>
+
+            <p>After the colouring procedure, the specimens are placed in glass with a specific solution inside
+              including glycerin, distilled water and formalin. Glycerin has a clearing effect on the tissue and
+              improves the optical properties of mounting fluid. Finally the jars are covered with a lid, sealed and
+              kept in the museum.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ethical Considerations Section -->
+      <div class="section collapsible">
+        <div class="section-header">
+          <h2>Ethical Guidelines</h2>
+          <span class="section-toggle" aria-hidden="true"></span>
+        </div>
+
+        <div class="section-content">
+          <div class="section-content-inner">
+            <p>All specimens in our collection have been ethically sourced and are used solely for educational purposes.
+              We treat all human remains with the utmost respect and dignity.</p>
+
+            <p>Photography may be restricted in certain areas of the museum. Please follow the guidance of museum staff
+              and respect the wishes of other visitors who may be reflecting quietly.</p>
+
+            <p>If you have any questions about our ethical practices or the origins of our specimens, please don't
+              hesitate to ask our staff.</p>
+          </div>
+        </div>
+      </div>
+
+      <a href="#" class="virtual-tour-cta" onclick="showPage('Virtual-tour'); return false;">
+        Visit our virtual tour
+        <span class="arrow" aria-hidden="true">→</span>
+      </a>
+
+
+    </div>
+
+<!-- ==================== VIRTUAL TOUR PAGE ==================== -->
+<!-- Replace your existing #Virtual-tour div with this -->
+
+<div id="Virtual-tour" class="page-content">
+  <div class="section">
+    <h2>Virtual Tour</h2>
+    <p>Click on any exhibit area to explore that section of the museum.</p>
+    
+    <div class="interactive-map">
+      <div class="interactive-map__container">
+        <img src="images/map_museum.png" alt="Museum floor plan showing exhibit locations" class="interactive-map__image" />
+        
+        <!-- Hotspot Buttons - Click to navigate to exhibits -->
+        
+        <!-- 1. Skeleton -->
+        <button 
+          class="map-hotspot map-hotspot--skeleton" 
+          data-label="Skeleton"
+          onclick="showExhibit('skeleton', 'medical'); return false;"
+          aria-label="Go to Skeleton exhibit">
+          <img src="images/icon-skeleton.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+        </button>
+        
+        <!-- 2. Heart -->
+        <button 
+          class="map-hotspot map-hotspot--heart" 
+          data-label="Heart"
+          onclick="showExhibit('heart', 'medical'); return false;"
+          aria-label="Go to Heart exhibit">
+          <img src="images/icon-heart.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+        </button>
+        
+        <!-- 3. Lungs/Respiratory -->
+        <button 
+          class="map-hotspot map-hotspot--lungs" 
+          data-label="Lungs"
+          onclick="showExhibit('respiratory', 'medical'); return false;"
+          aria-label="Go to Respiratory exhibit">
+          <img src="images/icon-lungs.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+        </button>
+        
+        <!-- 4. Brain/Nerve -->
+        <button 
+          class="map-hotspot map-hotspot--brain" 
+          data-label="Brain"
+          onclick="showExhibit('nerve', 'medical'); return false;"
+          aria-label="Go to Nervous System exhibit">
+          <img src="images/icon-brain.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+        </button>
+        
+        <!-- 5. Stomach (currently not in navigation, but on map) -->
+        <button 
+          class="map-hotspot map-hotspot--stomach" 
+          data-label="Stomach"
+          onclick="alert('Stomach exhibit coming soon!'); return false;"
+          aria-label="Stomach exhibit - coming soon">
+          <img src="images/icon-stomach.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+        </button>
+        
+        <!-- 6. Urogenital (currently not in navigation, but on map) -->
+        <button 
+          class="map-hotspot map-hotspot--urogenital" 
+          data-label="Urogenital"
+          onclick="alert('Urogenital exhibit coming soon!'); return false;"
+          aria-label="Urogenital exhibit - coming soon">
+          <img src="images/icon-urogenital.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+        </button>
+        
+        <!-- 7. Muscle -->
+        <button 
+          class="map-hotspot map-hotspot--muscle" 
+          data-label="Muscle"
+          onclick="showExhibit('muscle', 'medical'); return false;"
+          aria-label="Go to Muscle exhibit">
+          <img src="images/icon-muscle.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+        </button>
+        
+        <!-- 8. Fetus -->
+        <button 
+          class="map-hotspot map-hotspot--fetus" 
+          data-label="Fetus"
+          onclick="showExhibit('fetus', 'medical'); return false;"
+          aria-label="Go to Fetal Development exhibit">
+          <img src="images/icon-fetus.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+        </button>
+        
       </div>
     </div>
-    <div id="Virtual-tour" class="page-content">
-      <div class="section">
-        <h2>Virtual tour</h2>
-        <p>Content coming soon...</p>
-      </div>
-    </div>
+  </div>
+</div>
     <div id="contact" class="page-content">
       <div class="section">
         <h2>Contact Us</h2>

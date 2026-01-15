@@ -1,0 +1,47 @@
+/* Full-width bottom CTA on the disclaimer page */
+.virtual-tour-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  width: 100%;
+  margin: 0;
+  padding: 18px 22px;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom));
+
+  background: #111;
+  border-top: 1px solid #222;
+  color: #fff;
+  text-decoration: none;
+
+  font-family: "Georgia", serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  z-index: 999;
+}
+
+.virtual-tour-cta .arrow {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.virtual-tour-cta:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* Only when the disclaimer page is active, pin it to the bottom of the viewport */
+.container:has(#disclaimer.active) .virtual-tour-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Prevent content from being hidden behind the fixed bar */
+#disclaimer {
+  padding-bottom: 90px;
+}

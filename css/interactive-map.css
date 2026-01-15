@@ -1,0 +1,253 @@
+/* ===========================
+   Interactive Museum Map
+   =========================== */
+
+/* 
+   TUNING GUIDE:
+   Each button position is controlled by CSS custom properties.
+   Adjust --top and --left values (in percentages) to move buttons.
+   The percentage is relative to the map container size.
+   
+   Example: If a button is too far right, decrease its --left value.
+   Example: If a button is too low, decrease its --top value.
+*/
+
+.interactive-map {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.interactive-map__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 8px;
+}
+
+.interactive-map__container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+/* ===========================
+   Map Hotspot Buttons
+   =========================== */
+
+.map-hotspot {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  
+  /* Base styling */
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid #d4a574;
+  background: rgba(26, 26, 26, 0.3);
+  cursor: pointer;
+  
+  /* Center content */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* Transitions */
+  transition: all 0.3s ease;
+  
+  /* Pulse animation */
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.map-hotspot:hover {
+  transform: translate(-50%, -50%) scale(1.15);
+  background: rgba(212, 165, 116, 0.95);
+  border-color: #fff;
+  box-shadow: 0 0 20px rgba(212, 165, 116, 0.6);
+}
+
+.map-hotspot:active {
+  transform: translate(-50%, -50%) scale(1.05);
+}
+
+.map-hotspot__icon {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) invert(1);
+  transition: filter 0.3s ease;
+}
+
+.map-hotspot:hover .map-hotspot__icon {
+  filter: brightness(0) invert(0.1);
+}
+
+/* Pulse animation */
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(212, 165, 116, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(212, 165, 116, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(212, 165, 116, 0);
+  }
+}
+
+/* ===========================
+   POSITION TUNING SECTION
+   
+   Adjust these values to position each button correctly.
+   --top: vertical position (0% = top, 100% = bottom)
+   --left: horizontal position (0% = left, 100% = right)
+   =========================== */
+
+/* 1. Skeleton - Bottom right area */
+.map-hotspot--skeleton {
+  --top: 77%;
+  --left: 59%;
+  top: var(--top);
+  left: var(--left);
+}
+
+/* 2. Heart - Bottom left area */
+.map-hotspot--heart {
+  --top: 77%;
+  --left: 29%;
+  top: var(--top);
+  left: var(--left);
+}
+
+/* 3. Lungs (Respiratory) - Lower middle right */
+.map-hotspot--lungs {
+  --top: 63%;
+  --left: 57%;
+  top: var(--top);
+  left: var(--left);
+}
+
+/* 4. Brain (Nerve) - Lower middle left */
+.map-hotspot--brain {
+  --top: 63%;
+  --left: 30%;
+  top: var(--top);
+  left: var(--left);
+}
+
+/* 5. Stomach - Middle right */
+.map-hotspot--stomach {
+  --top: 49%;
+  --left: 52%;
+  top: var(--top);
+  left: var(--left);
+}
+
+/* 6. Urogenital - Middle left */
+.map-hotspot--urogenital {
+  --top: 49%;
+  --left: 32%;
+  top: var(--top);
+  left: var(--left);
+}
+
+/* 7. Muscle - Upper middle */
+.map-hotspot--muscle {
+  --top: 36%;
+  --left: 38%;
+  top: var(--top);
+  left: var(--left);
+}
+
+/* 8. Fetus - Top area */
+.map-hotspot--fetus {
+  --top: 22%;
+  --left: 36%;
+  top: var(--top);
+  left: var(--left);
+}
+
+/* ===========================
+   Optional: Tooltip Labels
+   =========================== */
+
+.map-hotspot::before {
+  content: attr(data-label);
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  
+  /* Styling */
+  background: rgba(26, 26, 26, 0.95);
+  color: #d4a574;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-family: "Georgia", serif;
+  white-space: nowrap;
+  
+  /* Hidden by default */
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+
+.map-hotspot:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* ===========================
+   Responsive Adjustments
+   =========================== */
+
+@media (max-width: 600px) {
+  .map-hotspot {
+    width: 36px;
+    height: 36px;
+    border-width: 2px;
+  }
+  
+  .map-hotspot__icon {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .map-hotspot::before {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+}
+
+@media (max-width: 400px) {
+  .map-hotspot {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .map-hotspot__icon {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* ===========================
+   DEBUG MODE (uncomment to see grid)
+   =========================== */
+
+/*
+.interactive-map__container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(to right, rgba(255,0,0,0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255,0,0,0.1) 1px, transparent 1px);
+  background-size: 10% 10%;
+  pointer-events: none;
+}
+*/

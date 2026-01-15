@@ -1,0 +1,191 @@
+/* ===========================
+   Preparation Page Styles
+   =========================== */
+
+/* Subheadings within prep sections */
+.prep-subheading {
+  color: #d4a574;
+  font-size: 1.2rem;
+  margin: 1.5rem 0 0.75rem 0;
+  font-weight: 600;
+  clear: both;
+}
+
+.prep-subheading:first-of-type {
+  margin-top: 1rem;
+}
+
+/* ===========================
+   Plastination Section Images
+   Small floated diagrams with text wrap
+   =========================== */
+
+/* Right-floated image container */
+.prep-image-right {
+  float: right;
+  margin: 0.25rem 0 1rem 1.5rem;
+  max-width: 200px;
+  text-align: center;
+  clear: right;
+}
+
+.prep-image-right img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Left-floated image container */
+.prep-image-left {
+  float: left;
+  margin: 0.25rem 1.5rem 1rem 0;
+  max-width: 200px;
+  text-align: center;
+  clear: left;
+}
+
+.prep-image-left img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Invert colors for dark theme (diagrams with light backgrounds) */
+.prep-invert img {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+/* ===========================
+   Corrosion Casting Section
+   Da Vinci left, corrosion cast right, text in middle
+   =========================== */
+
+/* Da Vinci - floated left, larger */
+.prep-davinci {
+  float: left;
+  margin: 0.5rem 1.5rem 1rem 0;
+  max-width: 280px;
+}
+
+.prep-davinci img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+/* Corrosion cast - floated right, smaller with white background */
+.prep-corrosion-cast {
+  float: right;
+  margin: 0 0 1rem 1.5rem;
+  max-width: 160px;
+}
+
+.prep-corrosion-cast img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  background: #ffffff;
+  padding: 8px;
+}
+
+/* Clear floats at end of content blocks */
+#disclaimer .section-content-inner::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ===========================
+   Mobile - Scale down but keep floats
+   =========================== */
+@media (max-width: 600px) {
+  /* Plastination diagrams - smaller but still floated */
+  .prep-image-right,
+  .prep-image-left {
+    max-width: 160px;
+    margin: 0.25rem 0 0.75rem 1rem;
+  }
+  
+  .prep-image-left {
+    margin: 0.25rem 1rem 0.75rem 0;
+  }
+  
+  /* Corrosion casting images - scale down */
+  .prep-davinci {
+    max-width: 160px;
+    margin: 0.25rem 1rem 0.75rem 0;
+  }
+  
+  .prep-corrosion-cast {
+    max-width: 100px; /* You can also try bumping this to 110px if text allows */
+    margin: 0 0 0.75rem 1rem;
+  }
+
+  /* FIX: Reduce the whitespace/padding so the image fills the container */
+  .prep-corrosion-cast img {
+    padding: 2px; 
+  }
+}
+
+@media (min-width: 601px) and (max-width: 900px) {
+  .prep-image-left,
+  .prep-image-right {
+    max-width: 160px;
+  }
+  
+  .prep-davinci {
+    max-width: 220px;
+  }
+  
+  .prep-corrosion-cast {
+    max-width: 130px;
+  }
+}
+
+/* Full-width bottom CTA on the disclaimer page */
+.virtual-tour-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+
+  width: 100%;
+  margin: 0;
+  padding: 18px 22px;
+  padding-bottom: calc(18px + env(safe-area-inset-bottom));
+
+  background: #111;
+  border-top: 1px solid #222;
+  color: #fff;
+  text-decoration: none;
+
+  font-family: "Georgia", serif;
+  font-size: 16px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+
+  z-index: 999;
+}
+
+.virtual-tour-cta .arrow {
+  font-size: 20px;
+  transition: transform 0.2s ease;
+}
+
+.virtual-tour-cta:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* Only when the disclaimer page is active, pin it to the bottom of the viewport */
+.container:has(#disclaimer.active) .virtual-tour-cta {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.45);
+}
+
+/* Prevent content from being hidden behind the fixed bar */
+#disclaimer {
+  padding-bottom: 90px;
+}
