@@ -346,23 +346,29 @@
           </div>
           <div class="section-content">
             <div class="section-content-inner">
-              <p>I am just the heart, but it doesn't beat anymore. I just used to smoke, but I don't smoke anymore. They
-                told me, as I now tell you, that smoking eventually ends you! – like making that red-beating heart fall
-                silent. How much does each cigarette shorten life? 20 minutes. I started smoking at 15 and quit at 55.
-                That's 40 years of cigarettes. How many cigarettes did I smoke on average each day? Hmm, say about 20 a
-                day then. 20 * 20 = 400 minutes a day. In that sense, I shortened my life by 6,6 hours every day. I died
-                later, of a heart attack, at 60, even after 5 years smoke-free. Was it worth it? No way, but at the same
-                time: smoking isn't just smoking, you know? What made me smoke? What did smoking mean to me? Listen: I
-                think we live in a society where who and what you're not is more important than what you are. I don't
-                smoke, I don't eat candy on weekdays, I'm not a guy who doesn't donate organs, I don't skip the bus
-                fare, I'm not boisterous, I don't swallow gum, I don't leave food on my plate even when I'm full – I am
-                not. Not not, not? So how hard was my heart really beating while it was still beating? Maybe smoking was
-                the last beat in a sea of no-beat. I am a smoker. Not someone who doesn't not smoke, but a smoker. That
-                idea makes me smile - sadly, but still. Why did I choose to quit at 55? I have, in a way, always
-                surrendered; I've always been a body with parts that others can't get enough of. I surrendered to the
-                plumbing trade, to the place where my wife wanted to live, and now I have surrendered my organs to you.
-                At last I even surrendered smoking. The transition isn't that great, if you know what I mean? Still: I
-                am not a person who doesn't donate his organs. It's strange, isn't it?</p>
+              <p>I am just the heart, but it doesn’t beat anymore. I used to smoke, but I don’t smoke anymore. They told me—just as I now tell you—that smoking eventually ends you. Like making that red, beating heart fall silent. 
+              <p></p>
+                How much does each cigarette shorten a life? Twenty minutes. I started smoking at fifteen and quit at fifty-five. That’s forty years of cigarettes. How many did I smoke each day? Say twenty. Twenty times twenty: four hundred minutes a day. In that sense, I shortened my life by six and a half hours, every day.
+              <p></p>
+                I died later, of a heart attack, at sixty. Even after five years smoke-free.
+<p></p>
+                Was it worth it? No way. And at the same time: smoking isn’t just smoking, you know? What made me smoke? What did it mean to me?
+<p></p>
+                Listen. I think we live in a society where who and what you’re not matters more than what you are. I don’t smoke. I don’t eat candy on weekdays. I’m not someone who doesn’t donate organs. I don’t skip the bus fare. I’m not boisterous. I don’t swallow gum. I don’t leave food on my plate even when I’m full. I
+                am not.
+<p></p>
+                Not. Not. Not.
+<p></p>
+                So how hard was my heart really beating while it was still beating? Maybe smoking was the last beat in a sea of no-beat. I am a smoker. Not someone who doesn’t not smoke, but a smoker. That thought makes me smile—sadly, but still.
+<p></p>
+                Why did I quit at fifty-five? I have, in a way, always surrendered. I have always been a body with parts others can’t get enough of. I surrendered to the plumbing trade. To the place my wife wanted to live.And now I have surrendered my organs to you. At last, I even surrendered smoking.
+<p></p>
+                The transition isn’t that great, if you know what I mean.
+<p></p>
+                Still: I am not a person who doesn’t donate his organs.
+<p></p>
+                It’s strange, isn’t it? 
+              </p>
             </div>
           </div>
         </div>
@@ -881,96 +887,76 @@
 
     </div>
 
-<!-- ==================== VIRTUAL TOUR PAGE ==================== -->
-<!-- Replace your existing #Virtual-tour div with this -->
+    <!-- ==================== VIRTUAL TOUR PAGE ==================== -->
+    <!-- Replace your existing #Virtual-tour div with this -->
 
-<div id="Virtual-tour" class="page-content">
-  <div class="section">
-    <h2>Virtual Tour</h2>
-    <p>Click on any exhibit area to explore that section of the museum.</p>
-    
-    <div class="interactive-map">
-      <div class="interactive-map__container">
-        <img src="images/map_museum.png" alt="Museum floor plan showing exhibit locations" class="interactive-map__image" />
-        
-        <!-- Hotspot Buttons - Click to navigate to exhibits -->
-        
-        <!-- 1. Skeleton -->
-        <button 
-          class="map-hotspot map-hotspot--skeleton" 
-          data-label="Skeleton"
-          onclick="showExhibit('skeleton', 'medical'); return false;"
-          aria-label="Go to Skeleton exhibit">
-          <img src="images/icon-skeleton.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
-        </button>
-        
-        <!-- 2. Heart -->
-        <button 
-          class="map-hotspot map-hotspot--heart" 
-          data-label="Heart"
-          onclick="showExhibit('heart', 'medical'); return false;"
-          aria-label="Go to Heart exhibit">
-          <img src="images/icon-heart.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
-        </button>
-        
-        <!-- 3. Lungs/Respiratory -->
-        <button 
-          class="map-hotspot map-hotspot--lungs" 
-          data-label="Lungs"
-          onclick="showExhibit('respiratory', 'medical'); return false;"
-          aria-label="Go to Respiratory exhibit">
-          <img src="images/icon-lungs.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
-        </button>
-        
-        <!-- 4. Brain/Nerve -->
-        <button 
-          class="map-hotspot map-hotspot--brain" 
-          data-label="Brain"
-          onclick="showExhibit('nerve', 'medical'); return false;"
-          aria-label="Go to Nervous System exhibit">
-          <img src="images/icon-brain.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
-        </button>
-        
-        <!-- 5. Stomach (currently not in navigation, but on map) -->
-        <button 
-          class="map-hotspot map-hotspot--stomach" 
-          data-label="Stomach"
-          onclick="alert('Stomach exhibit coming soon!'); return false;"
-          aria-label="Stomach exhibit - coming soon">
-          <img src="images/icon-stomach.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
-        </button>
-        
-        <!-- 6. Urogenital (currently not in navigation, but on map) -->
-        <button 
-          class="map-hotspot map-hotspot--urogenital" 
-          data-label="Urogenital"
-          onclick="alert('Urogenital exhibit coming soon!'); return false;"
-          aria-label="Urogenital exhibit - coming soon">
-          <img src="images/icon-urogenital.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
-        </button>
-        
-        <!-- 7. Muscle -->
-        <button 
-          class="map-hotspot map-hotspot--muscle" 
-          data-label="Muscle"
-          onclick="showExhibit('muscle', 'medical'); return false;"
-          aria-label="Go to Muscle exhibit">
-          <img src="images/icon-muscle.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
-        </button>
-        
-        <!-- 8. Fetus -->
-        <button 
-          class="map-hotspot map-hotspot--fetus" 
-          data-label="Fetus"
-          onclick="showExhibit('fetus', 'medical'); return false;"
-          aria-label="Go to Fetal Development exhibit">
-          <img src="images/icon-fetus.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
-        </button>
-        
+    <div id="Virtual-tour" class="page-content">
+      <div class="section">
+        <h2>Virtual Tour</h2>
+        <p>Click on any exhibit area to explore that section of the museum.</p>
+
+        <div class="interactive-map">
+          <div class="interactive-map__container">
+            <img src="images/map_museum.png" alt="Museum floor plan showing exhibit locations"
+              class="interactive-map__image" />
+
+            <!-- Hotspot Buttons - Click to navigate to exhibits -->
+
+            <!-- 1. Skeleton -->
+            <button class="map-hotspot map-hotspot--skeleton" data-label="Skeleton"
+              onclick="showExhibit('skeleton', 'medical'); return false;" aria-label="Go to Skeleton exhibit">
+              <img src="images/icon-skeleton.png" alt="" class="map-hotspot__icon"
+                onerror="this.style.display='none'" />
+            </button>
+
+            <!-- 2. Heart -->
+            <button class="map-hotspot map-hotspot--heart" data-label="Heart"
+              onclick="showExhibit('heart', 'medical'); return false;" aria-label="Go to Heart exhibit">
+              <img src="images/icon-heart.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+            </button>
+
+            <!-- 3. Lungs/Respiratory -->
+            <button class="map-hotspot map-hotspot--lungs" data-label="Lungs"
+              onclick="showExhibit('respiratory', 'medical'); return false;" aria-label="Go to Respiratory exhibit">
+              <img src="images/icon-lungs.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+            </button>
+
+            <!-- 4. Brain/Nerve -->
+            <button class="map-hotspot map-hotspot--brain" data-label="Brain"
+              onclick="showExhibit('nerve', 'medical'); return false;" aria-label="Go to Nervous System exhibit">
+              <img src="images/icon-brain.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+            </button>
+
+            <!-- 5. Stomach (currently not in navigation, but on map) -->
+            <button class="map-hotspot map-hotspot--stomach" data-label="Stomach"
+              onclick="alert('Stomach exhibit coming soon!'); return false;" aria-label="Stomach exhibit - coming soon">
+              <img src="images/icon-stomach.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+            </button>
+
+            <!-- 6. Urogenital (currently not in navigation, but on map) -->
+            <button class="map-hotspot map-hotspot--urogenital" data-label="Urogenital"
+              onclick="alert('Urogenital exhibit coming soon!'); return false;"
+              aria-label="Urogenital exhibit - coming soon">
+              <img src="images/icon-urogenital.png" alt="" class="map-hotspot__icon"
+                onerror="this.style.display='none'" />
+            </button>
+
+            <!-- 7. Muscle -->
+            <button class="map-hotspot map-hotspot--muscle" data-label="Muscle"
+              onclick="showExhibit('muscle', 'medical'); return false;" aria-label="Go to Muscle exhibit">
+              <img src="images/icon-muscle.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+            </button>
+
+            <!-- 8. Fetus -->
+            <button class="map-hotspot map-hotspot--fetus" data-label="Fetus"
+              onclick="showExhibit('fetus', 'medical'); return false;" aria-label="Go to Fetal Development exhibit">
+              <img src="images/icon-fetus.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
+            </button>
+
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
     <div id="contact" class="page-content">
       <div class="section">
         <h2>Contact Us</h2>
