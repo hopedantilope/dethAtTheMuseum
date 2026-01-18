@@ -36,7 +36,7 @@ document.addEventListener("click", function(e) {
 // ===========================
 
 // List of pages that should show the bottom exhibit nav
-const exhibitPages = ['heart', 'skeleton', 'respiratory', 'nerve', 'muscle', 'fetus'];
+const exhibitPages = ['heart', 'skeleton', 'respiratory', 'brain', 'muscle', 'fetus'];
 
 function updateExhibitNavVisibility(pageId) {
   const exhibitNav = document.getElementById('exhibitNav');

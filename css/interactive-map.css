@@ -95,15 +95,7 @@
   }
 }
 
-/* ===========================
-   POSITION TUNING SECTION
-   
-   Adjust these values to position each button correctly.
-   --top: vertical position (0% = top, 100% = bottom)
-   --left: horizontal position (0% = left, 100% = right)
-   =========================== */
 
-/* 1. Skeleton - Bottom right area */
 .map-hotspot--skeleton {
   --top: 77%;
   --left: 59%;
@@ -111,7 +103,6 @@
   left: var(--left);
 }
 
-/* 2. Heart - Bottom left area */
 .map-hotspot--heart {
   --top: 77%;
   --left: 29%;
@@ -119,7 +110,6 @@
   left: var(--left);
 }
 
-/* 3. Lungs (Respiratory) - Lower middle right */
 .map-hotspot--lungs {
   --top: 63%;
   --left: 57%;
@@ -127,7 +117,6 @@
   left: var(--left);
 }
 
-/* 4. Brain (Nerve) - Lower middle left */
 .map-hotspot--brain {
   --top: 63%;
   --left: 30%;
@@ -135,7 +124,6 @@
   left: var(--left);
 }
 
-/* 5. Stomach - Middle right */
 .map-hotspot--stomach {
   --top: 49%;
   --left: 52%;
@@ -143,7 +131,6 @@
   left: var(--left);
 }
 
-/* 6. Urogenital - Middle left */
 .map-hotspot--urogenital {
   --top: 49%;
   --left: 32%;
@@ -151,7 +138,6 @@
   left: var(--left);
 }
 
-/* 7. Muscle - Upper middle */
 .map-hotspot--muscle {
   --top: 36%;
   --left: 38%;
@@ -159,7 +145,6 @@
   left: var(--left);
 }
 
-/* 8. Fetus - Top area */
 .map-hotspot--fetus {
   --top: 22%;
   --left: 36%;
@@ -178,7 +163,6 @@
   left: 50%;
   transform: translateX(-50%);
   
-  /* Styling */
   background: rgba(26, 26, 26, 0.95);
   color: #d4a574;
   padding: 6px 12px;
@@ -187,7 +171,6 @@
   font-family: "Georgia", serif;
   white-space: nowrap;
   
-  /* Hidden by default */
   opacity: 0;
   visibility: hidden;
   transition: all 0.2s ease;
@@ -231,23 +214,3 @@
     height: 16px;
   }
 }
-
-/* ===========================
-   DEBUG MODE (uncomment to see grid)
-   =========================== */
-
-/*
-.interactive-map__container::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: 
-    linear-gradient(to right, rgba(255,0,0,0.1) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(255,0,0,0.1) 1px, transparent 1px);
-  background-size: 10% 10%;
-  pointer-events: none;
-}
-*/

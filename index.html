@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="css/prep.css" />
   <link rel="stylesheet" href="css/virtual-tour.css" />
   <link rel="stylesheet" href="css/interactive-map.css" />
+  <link rel="stylesheet" href="css/search.css" />
 </head>
 
 <body>
@@ -68,7 +69,7 @@
         <a href="#" onclick="showExhibit('heart','medical'); toggleMainMenu(); return false;">Heart</a>
         <a href="#" onclick="showExhibit('skeleton','medical'); toggleMainMenu(); return false;">Skeleton</a>
         <a href="#" onclick="showExhibit('respiratory','medical'); toggleMainMenu(); return false;">Respiratory</a>
-        <a href="#" onclick="showExhibit('nerve','medical'); toggleMainMenu(); return false;">Nerve</a>
+        <a href="#" onclick="showExhibit('brain','medical'); toggleMainMenu(); return false;">Brain</a>
         <a href="#" onclick="showExhibit('muscle','medical'); toggleMainMenu(); return false;">Muscle</a>
         <a href="#" onclick="showExhibit('fetus','medical'); toggleMainMenu(); return false;">Fetus</a>
       </div>
@@ -79,8 +80,6 @@
 
   <div class="container" id="main-content">
     <!-- ==================== HOME PAGE ==================== -->
-    <!-- ==================== HOME PAGE ==================== -->
-    <!-- Replace your existing #home div with this -->
     <div id="home" class="page-content active">
 
       <!-- Section 1: Hero -->
@@ -105,13 +104,10 @@
       <!-- Section 2: Before Visiting -->
       <section class="home-section home-section--visit">
         <div class="visit-content">
-          <!-- Left: Anatomy Image -->
           <div class="visit-image">
-            <!-- Replace with your actual image -->
             <img src="images/bodyHome.png" alt="Anatomical specimen display" />
           </div>
 
-          <!-- Right: Text Content -->
           <div class="visit-text">
             <h2>Will You Be Visiting the Museum in Person Soon?</h2>
             <p>The museum contains real human remains used in medical education. We encourage quiet, respectful
@@ -346,28 +342,39 @@
           </div>
           <div class="section-content">
             <div class="section-content-inner">
-              <p>I am just the heart, but it doesn’t beat anymore. I used to smoke, but I don’t smoke anymore. They told me—just as I now tell you—that smoking eventually ends you. Like making that red, beating heart fall silent. 
+              <p>I am just the heart, but it doesn’t beat anymore. I used to smoke, but I don’t smoke anymore. They told
+                me—just as I now tell you—that smoking eventually ends you. Like making that red, beating heart fall
+                silent.
               <p></p>
-                How much does each cigarette shorten a life? Twenty minutes. I started smoking at fifteen and quit at fifty-five. That’s forty years of cigarettes. How many did I smoke each day? Say twenty. Twenty times twenty: four hundred minutes a day. In that sense, I shortened my life by six and a half hours, every day.
+              How much does each cigarette shorten a life? Twenty minutes. I started smoking at fifteen and quit at
+              fifty-five. That’s forty years of cigarettes. How many did I smoke each day? Say twenty. Twenty times
+              twenty: four hundred minutes a day. In that sense, I shortened my life by six and a half hours, every day.
               <p></p>
-                I died later, of a heart attack, at sixty. Even after five years smoke-free.
-<p></p>
-                Was it worth it? No way. And at the same time: smoking isn’t just smoking, you know? What made me smoke? What did it mean to me?
-<p></p>
-                Listen. I think we live in a society where who and what you’re not matters more than what you are. I don’t smoke. I don’t eat candy on weekdays. I’m not someone who doesn’t donate organs. I don’t skip the bus fare. I’m not boisterous. I don’t swallow gum. I don’t leave food on my plate even when I’m full. I
-                am not.
-<p></p>
-                Not. Not. Not.
-<p></p>
-                So how hard was my heart really beating while it was still beating? Maybe smoking was the last beat in a sea of no-beat. I am a smoker. Not someone who doesn’t not smoke, but a smoker. That thought makes me smile—sadly, but still.
-<p></p>
-                Why did I quit at fifty-five? I have, in a way, always surrendered. I have always been a body with parts others can’t get enough of. I surrendered to the plumbing trade. To the place my wife wanted to live.And now I have surrendered my organs to you. At last, I even surrendered smoking.
-<p></p>
-                The transition isn’t that great, if you know what I mean.
-<p></p>
-                Still: I am not a person who doesn’t donate his organs.
-<p></p>
-                It’s strange, isn’t it? 
+              I died later, of a heart attack, at sixty. Even after five years smoke-free.
+              <p></p>
+              Was it worth it? No way. And at the same time: smoking isn’t just smoking, you know? What made me smoke?
+              What did it mean to me?
+              <p></p>
+              Listen. I think we live in a society where who and what you’re not matters more than what you are. I don’t
+              smoke. I don’t eat candy on weekdays. I’m not someone who doesn’t donate organs. I don’t skip the bus
+              fare. I’m not boisterous. I don’t swallow gum. I don’t leave food on my plate even when I’m full. I
+              am not.
+              <p></p>
+              Not. Not. Not.
+              <p></p>
+              So how hard was my heart really beating while it was still beating? Maybe smoking was the last beat in a
+              sea of no-beat. I am a smoker. Not someone who doesn’t not smoke, but a smoker. That thought makes me
+              smile—sadly, but still.
+              <p></p>
+              Why did I quit at fifty-five? I have, in a way, always surrendered. I have always been a body with parts
+              others can’t get enough of. I surrendered to the plumbing trade. To the place my wife wanted to live.And
+              now I have surrendered my organs to you. At last, I even surrendered smoking.
+              <p></p>
+              The transition isn’t that great, if you know what I mean.
+              <p></p>
+              Still: I am not a person who doesn’t donate his organs.
+              <p></p>
+              It’s strange, isn’t it?
               </p>
             </div>
           </div>
@@ -529,9 +536,12 @@
       </div>
     </div>
 
-    <!-- ==================== NERVE EXHIBIT ==================== -->
-    <div id="nerve" class="page-content" data-exhibit="nerve">
-      <div id="nerve-medical" class="exhibit-panel active">
+    <!-- ==================== BRAIN EXHIBIT ==================== -->
+    <div id="brain" class="page-content" data-exhibit="brain">
+
+      <!-- Medical/Health Panel -->
+      <div id="brain-medical" class="exhibit-panel active">
+
         <div class="section collapsible expanded">
           <div class="section-header">
             <h2>Nervous System Exhibition</h2>
@@ -539,15 +549,188 @@
           </div>
           <div class="section-content">
             <div class="section-content-inner">
-              <p>Content coming soon...</p>
+              <p>The brain is the command center of the human body—a universe of connections housed within the skull.
+                Every thought, every memory, every heartbeat begins here. In this exhibit, we invite you to explore the
+                organ that makes us who we are.</p>
+              <div class="brain-viewer">
+                <img src="images/brain-anatomy-diagram.png"
+                  alt="Anatomical diagram of the human brain showing major structures"
+                  style="max-width: 100%; height: auto;" />
+              </div>
             </div>
           </div>
         </div>
+
+        <div class="section collapsible">
+          <div class="section-header">
+            <h2>Anatomy – What are the brain's parts?</h2>
+            <span class="section-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="section-content">
+            <div class="section-content-inner">
+              <p>The human brain weighs on average about 1.3 kg. The largest part of the brain is the cerebrum, which
+                consists of two cerebral hemispheres (left and right). Each hemisphere is divided into four lobes: the
+                frontal lobe, parietal lobe, temporal lobe, and occipital lobe. The surface of the brain is folded into
+                ridges (gyri) and grooves (sulci).</p>
+              <p>Another part of the brain is the brainstem, which resembles a stalk. The brainstem includes the
+                midbrain, the pons, and the medulla oblongata. Behind the brainstem is the cerebellum, which can be
+                translated from Latin as "little brain." The brain is further covered by three membranes and the skull,
+                which protect it from injury. The brain is connected to the body via the spinal cord and cranial nerves.
+                <a href="https://books.google.no/books?hl=cs&lr=&id=aSaVDwAAQBAJ&oi=fnd&pg=PR4&dq=heart+anatomy+and+physiology&ots=lf4rXQ2wxI&sig=OTGoyJu3k-o_ybZijQaGz6bZ3l8&redir_esc=y#v=onepage&q=heart%20anatomy%20and%20physiology&f=false"
+                  target="_blank" rel="noopener">[source]</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section collapsible">
+          <div class="section-header">
+            <h2>Physiology – What are the main functions of your brain?</h2>
+            <span class="section-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="section-content">
+            <div class="section-content-inner">
+              <p>The brain has many functions, including processing sensory input, controlling movement, storing
+                information, making decisions, and regulating emotions. It receives information from the sense organs
+                (eyes, ears, nose, tongue, and skin) and interprets this information and guides behavior and responses.
+              </p>
+              <p>Additionally, the brain contains specialized areas for language, such as Broca's area and Wernicke's
+                area, which are responsible for language production and comprehension. <a
+                  href="https://books.google.no/books?hl=cs&lr=&id=aSaVDwAAQBAJ&oi=fnd&pg=PR4&dq=heart+anatomy+and+physiology&ots=lf4rXQ2wxI&sig=OTGoyJu3k-o_ybZijQaGz6bZ3l8&redir_esc=y#v=onepage&q=heart%20anatomy%20and%20physiology&f=false"
+                  target="_blank" rel="noopener">[source]</a></p>
+            </div>
+          </div>
+        </div>
+
       </div>
-      <div id="nerve-disease" class="exhibit-panel">
+
+      <!-- Disease Panel -->
+      <div id="brain-disease" class="exhibit-panel">
         <div class="section collapsible expanded">
           <div class="section-header">
-            <h2>Nerve — Story</h2>
+            <h2>Brain diseases</h2>
+            <span class="section-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="section-content">
+            <div class="section-content-inner">
+              <p>The brain can suffer from different types of diseases with different origins. Brain diseases include
+                neurodegenerative diseases, which are caused by a progressive loss of neurons (Alzheimer's disease,
+                dementia, Parkinson's disease). Vascular diseases are caused by a limited supply of blood flow and
+                include ischemic and hemorrhagic stroke.</p>
+              <p>Epilepsy and headache disorders are caused by dysregulation of electrical activity. Brain infections
+                are caused by bacteria or viruses (meningitis, encephalitis). Developmental and genetic disorders are
+                caused by problems in brain formation or genetic factors (autism spectrum disorder). Mental health
+                disorders affect mood, thinking, and behavior (depression, anxiety, schizophrenia). Other categories of
+                brain disorders also include brain tumors and injuries.</p>
+              <p>According to WHO, brain health can be defined as the state of brain functioning across cognitive,
+                sensory, social-emotional, behavioural and motor domains, allowing a person to realize their full
+                potential over the lifetime. <a href="https://www.who.int/health-topics/brain-health#tab="
+                  target="_blank" rel="noopener">[source]</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section collapsible">
+          <div class="section-header">
+            <h2>Prevention – Brain health</h2>
+            <span class="section-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="section-content">
+            <div class="section-content-inner">
+              <p>It is important to maintain good brain health because it improves mental and physical health, creates
+                positive social and economic impacts, and leads to greater well-being while helping to advance society.
+              </p>
+              <p>According to the WHO, brain health is determined by five different areas: <a
+                  href="https://www.who.int/publications/i/item/9789240054561" target="_blank"
+                  rel="noopener">[source]</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section collapsible">
+          <div class="section-header">
+            <h2>1. Physical health</h2>
+            <span class="section-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="section-content">
+            <div class="section-content-inner">
+              <p>As humans, our physical health can impact our brain health in many ways because there are numerous
+                interactions between the brain and the body. Good physical health includes maternal health and the
+                intrauterine environment, genetic and epigenetic factors, good nutrition, and prevention of infections.
+                We can improve our physical health by focusing on good-quality sleep, regular physical activity, and
+                avoiding substance use.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section collapsible">
+          <div class="section-header">
+            <h2>2. Healthy environments</h2>
+            <span class="section-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="section-content">
+            <div class="section-content-inner">
+              <p>A healthy environment is especially important during developmentally sensitive stages such as early
+                childhood, adolescence, and older age. Brain health can be negatively influenced by pollutants found in
+                air, water, and food, as well as by neurotoxic chemicals, including heavy metals, inorganic compounds,
+                pesticides, and organic solvents. Changing the environment is often more difficult than changing
+                physical health, but it is still possible to make changes when necessary (for example, limiting the use
+                of pesticides in your garden).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section collapsible">
+          <div class="section-header">
+            <h2>3. Safety and security</h2>
+            <span class="section-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="section-content">
+            <div class="section-content-inner">
+              <p>Physical safety and financial security can impact brain health throughout the life course in multiple
+                ways. Physical safety includes stable and safe housing, as well as safety within the home and the
+                broader community. Financial security includes the absence of stress caused by financial concerns. This
+                means being able to afford the necessities of life, including food, housing, health care, education, and
+                transport.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section collapsible">
+          <div class="section-header">
+            <h2>4. Learning and social connection</h2>
+            <span class="section-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="section-content">
+            <div class="section-content-inner">
+              <p>Opportunities to learn and connect with others are important for brain health throughout life. Early
+                learning depends on caring and supportive relationships. While later-life learning including cognitive
+                stimulation often comes through school, employment and social networks. Supporting brain health,
+                especially in early life, often means helping people both learn and build strong social connections.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section collapsible">
+          <div class="section-header">
+            <h2>5. Access to quality services</h2>
+            <span class="section-toggle" aria-hidden="true"></span>
+          </div>
+          <div class="section-content">
+            <div class="section-content-inner">
+              <p>At some point in our lifetime many people will still develop some brain related disease, despite best
+                effort to minimize risk factors. Therefore it is necessary to have access to quality health and social
+                services. Those people can then receive right diagnosis and necessary treatment.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Reflections Panel -->
+      <div id="brain-reflections" class="exhibit-panel">
+        <div class="section collapsible expanded">
+          <div class="section-header">
+            <h2>Brain — Story</h2>
             <span class="section-toggle" aria-hidden="true"></span>
           </div>
           <div class="section-content">
@@ -557,20 +740,9 @@
           </div>
         </div>
       </div>
-      <div id="nerve-reflections" class="exhibit-panel">
-        <div class="section collapsible expanded">
-          <div class="section-header">
-            <h2>Reflections</h2>
-            <span class="section-toggle" aria-hidden="true"></span>
-          </div>
-          <div class="section-content">
-            <div class="section-content-inner">
-              <p>Content coming soon...</p>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="nerve-history" class="exhibit-panel">
+
+      <!-- Patient History Panel -->
+      <div id="brain-history" class="exhibit-panel">
         <div class="section collapsible expanded">
           <div class="section-header">
             <h2>Medical History</h2>
@@ -921,9 +1093,9 @@
               <img src="images/icon-lungs.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
             </button>
 
-            <!-- 4. Brain/Nerve -->
+            <!-- 4. Brain -->
             <button class="map-hotspot map-hotspot--brain" data-label="Brain"
-              onclick="showExhibit('nerve', 'medical'); return false;" aria-label="Go to Nervous System exhibit">
+              onclick="showExhibit('brain', 'medical'); return false;" aria-label="Go to Nervous System exhibit">
               <img src="images/icon-brain.png" alt="" class="map-hotspot__icon" onerror="this.style.display='none'" />
             </button>
 
@@ -1004,6 +1176,7 @@
   <script src="libs/OrbitControls.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
   <script src="js/heart-viewer.js"></script>
+  <script src="js/search.js"></script>
 </body>
 
 </html>

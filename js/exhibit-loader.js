@@ -53,7 +53,7 @@ async function loadExhibitContent(exhibitId) {
 
 // Preload all exhibits on page load (optional - for faster navigation)
 async function preloadAllExhibits() {
-  const exhibits = ['heart', 'skeleton', 'respiratory', 'nerve', 'muscle', 'fetus'];
+  const exhibits = ['heart', 'skeleton', 'respiratory', 'brain', 'muscle', 'fetus'];
   
   for (const exhibitId of exhibits) {
     await loadExhibitContent(exhibitId);

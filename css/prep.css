@@ -50,10 +50,14 @@
   border-radius: 6px;
 }
 
-/* Invert colors for dark theme (diagrams with light backgrounds) */
+/* ===========================
+   NO INVERT (removed)
+   =========================== */
+/* Was:
 .prep-invert img {
   filter: invert(1) hue-rotate(180deg);
 }
+*/
 
 /* ===========================
    Corrosion Casting Section
@@ -73,7 +77,7 @@
   border-radius: 6px;
 }
 
-/* Corrosion cast - floated right, smaller with white background */
+/* Corrosion cast - floated right, smaller */
 .prep-corrosion-cast {
   float: right;
   margin: 0 0 1rem 1.5rem;
@@ -84,8 +88,10 @@
   width: 100%;
   height: auto;
   border-radius: 6px;
-  background: #ffffff;
-  padding: 8px;
+
+  /* removed the added white area */
+  background: transparent;
+  padding: 0;
 }
 
 /* Clear floats at end of content blocks */
@@ -105,25 +111,26 @@
     max-width: 160px;
     margin: 0.25rem 0 0.75rem 1rem;
   }
-  
+
   .prep-image-left {
     margin: 0.25rem 1rem 0.75rem 0;
   }
-  
+
   /* Corrosion casting images - scale down */
   .prep-davinci {
     max-width: 160px;
     margin: 0.25rem 1rem 0.75rem 0;
   }
-  
+
   .prep-corrosion-cast {
     max-width: 100px; /* You can also try bumping this to 110px if text allows */
     margin: 0 0 0.75rem 1rem;
   }
 
-  /* FIX: Reduce the whitespace/padding so the image fills the container */
+  /* keep clean on mobile too (no padding/background) */
   .prep-corrosion-cast img {
-    padding: 2px; 
+    padding: 0;
+    background: transparent;
   }
 }
 
@@ -132,11 +139,11 @@
   .prep-image-right {
     max-width: 160px;
   }
-  
+
   .prep-davinci {
     max-width: 220px;
   }
-  
+
   .prep-corrosion-cast {
     max-width: 130px;
   }
