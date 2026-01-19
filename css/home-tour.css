@@ -1,0 +1,256 @@
+/* ===========================
+   Section 4: Virtual Tour + Footer
+   =========================== */
+
+.home-section--tour {
+  background: #000;
+  display: flex;
+  flex-direction: column;
+}
+
+.tour-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* Left side - text/link */
+.tour-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 80px;
+}
+
+.tour-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 20px;
+  font-family: "Georgia", serif;
+  font-size: 36px;
+  color: #fff;
+  text-decoration: none;
+  transition: gap 0.3s ease;
+  max-width: fit-content;
+}
+
+.tour-link:hover {
+  gap: 35px;
+}
+
+.tour-link .arrow {
+  font-size: 36px;
+  font-weight: 300;
+  transition: transform 0.3s ease;
+}
+
+.tour-link:hover .arrow {
+  transform: translateX(8px);
+}
+
+/* Right side - floor map */
+.tour-map {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.tour-map img {
+  width: auto;
+  height: 80%;
+  max-height: 400px;
+  object-fit: contain;
+  opacity: 1;
+}
+
+/* ===========================
+   Footer
+   =========================== */
+
+.home-footer {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  background: #111;
+  border-top: 1px solid #222;
+  padding: 40px 60px;
+  gap: 40px;
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer-brand .footer-logo {
+  font-family: "Georgia", serif;
+  font-size: 36px;
+  font-weight: bold;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.footer-brand p {
+  font-family: "Georgia", serif;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.footer-brand .copyright {
+  margin-top: auto;
+  font-size: 12px;
+  color: #444;
+}
+
+.footer-shortcuts {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-shortcuts h3 {
+  font-family: "Georgia", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px 0;
+}
+
+.footer-shortcuts a {
+  font-family: "Georgia", serif;
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-shortcuts a:hover {
+  color: #fff;
+}
+
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-contact h3 {
+  font-family: "Georgia", serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 10px 0;
+}
+
+.footer-contact a {
+  font-family: "Georgia", serif;
+  font-size: 14px;
+  color: #888;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-contact a:hover {
+  color: #fff;
+}
+
+.footer-map-small {
+  margin-top: 15px;
+  width: 100%;
+  height: 120px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.footer-map-small iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ===========================
+   Tour + Footer Responsive
+   =========================== */
+
+@media (max-width: 1024px) {
+  .tour-text {
+    padding: 40px 50px;
+  }
+  
+  .tour-link {
+    font-size: 28px;
+  }
+  
+  .home-footer {
+    padding: 30px 40px;
+    gap: 30px;
+  }
+}
+
+@media (max-width: 767px) {
+  .home-section--tour {
+    height: auto;
+    min-height: calc(100vh - 52px);
+  }
+  
+  .tour-content {
+    grid-template-columns: 1fr;
+    flex: none;
+  }
+  
+  .tour-text {
+    padding: 60px 25px 40px;
+    order: 1;
+  }
+  
+  .tour-link {
+    font-size: 22px;
+    gap: 15px;
+  }
+  
+  .tour-map {
+    padding: 20px 25px 40px;
+    order: 2;
+  }
+  
+  .tour-map img {
+    height: auto;
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  /* Footer mobile */
+  .home-footer {
+    grid-template-columns: 1fr;
+    padding: 30px 25px;
+    gap: 30px;
+  }
+  
+  .footer-brand .footer-logo {
+    font-size: 28px;
+  }
+  
+  .footer-map-small {
+    height: 150px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .tour-link {
+    font-size: 42px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .tour-link {
+    font-size: 48px;
+  }
+}

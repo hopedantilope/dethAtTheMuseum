@@ -1,0 +1,324 @@
+/* ===========================
+   Home Page - Base Styles
+   =========================== */
+
+/* Make logo bigger */
+.logo-img {
+  height: 50px !important;
+}
+
+@media (min-width: 768px) {
+  .logo-img {
+    height: 60px !important;
+  }
+}
+
+/* ===========================
+   Container Override for Home
+   =========================== */
+
+.container:has(#home.active) {
+  max-width: none;
+  padding: 0;
+  height: calc(100vh - 52px);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .container:has(#home.active) {
+    height: calc(100vh - 56px);
+  }
+}
+
+/* Home page scroll container */
+#home.page-content {
+  padding: 0;
+  margin: 0;
+}
+
+#home.page-content.active {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+#home.page-content::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+#home.page-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Each section snaps to viewport */
+.home-section {
+  width: 100%;
+  height: calc(100vh - 52px);
+  min-height: calc(100vh - 52px);
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+  background: #000;
+}
+
+@media (min-width: 768px) {
+  .home-section {
+    height: calc(100vh - 56px);
+    min-height: calc(100vh - 56px);
+  }
+}
+
+/* ===========================
+   Section 1: Hero/Intro
+   =========================== */
+
+.home-section--hero {
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Hand image - centered at top */
+.bg-hand {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  height: 75%;
+  max-height: 600px;
+  opacity: 1;
+  object-fit: contain;
+}
+
+/* Flower image - left side, vertically centered */
+.bg-flower {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: auto;
+  height: 50%;
+  max-height: 400px;
+  opacity: 1;
+  object-fit: contain;
+}
+
+/* Skeleton image - right side, vertically centered */
+.bg-skeleton {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  width: auto;
+  height: 60%;
+  max-height: 500px;
+  opacity: 0.9;
+  object-fit: contain;
+}
+
+/* ===========================
+   Home Page Text Overlay
+   =========================== */
+
+.home-text {
+  position: relative;
+  text-align: center;
+  z-index: 2;
+  pointer-events: none;
+  padding: 0 20px;
+}
+
+.home-title {
+  font-family: "Georgia", serif;
+  font-size: 80px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+}
+
+.home-subtitle {
+  font-family: "Georgia", serif;
+  font-size: 26px;
+  color: #fff;
+  letter-spacing: 4px;
+  margin-bottom: 2rem;
+}
+
+.home-quote {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 18px;
+  color: #fff;
+  letter-spacing: 1px;
+  opacity: 0.9;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  opacity: 0.7;
+  animation: scrollBounce 2s ease-in-out infinite;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.scroll-indicator span {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 11px;
+  color: #fff;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.scroll-arrow {
+  width: 20px;
+  height: 20px;
+  border-right: 1.5px solid #fff;
+  border-bottom: 1.5px solid #fff;
+  transform: rotate(45deg);
+  margin-top: -5px;
+}
+
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-50%) translateY(8px);
+    opacity: 1;
+  }
+}
+
+/* ===========================
+   Hero Responsive
+   =========================== */
+
+@media (max-width: 1024px) {
+  .home-title {
+    font-size: 60px;
+  }
+  
+  .home-subtitle {
+    font-size: 22px;
+  }
+}
+
+@media (max-width: 767px) {
+  .container:has(#home.active) {
+    height: calc(100vh - 52px);
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+  
+  .home-section {
+    height: calc(100vh - 52px);
+    min-height: calc(100vh - 52px);
+  }
+  
+  /* Hero section mobile - hide background images */
+  .home-background {
+    display: none;
+  }
+  
+  .home-text {
+    width: 90%;
+    padding: 0 20px;
+  }
+  
+  .home-title {
+    font-size: 42px;
+    letter-spacing: 1px;
+  }
+  
+  .home-subtitle {
+    font-size: 14px;
+    letter-spacing: 3px;
+    margin-bottom: 1.5rem;
+  }
+  
+  .home-quote {
+    font-size: 13px;
+    padding: 0 10px;
+    line-height: 1.6;
+  }
+  
+  .scroll-indicator {
+    bottom: 25px;
+  }
+  
+  .scroll-indicator span {
+    font-size: 10px;
+  }
+  
+  .scroll-arrow {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-title {
+    font-size: 90px;
+  }
+  
+  .home-subtitle {
+    font-size: 28px;
+  }
+  
+  .home-quote {
+    font-size: 20px;
+  }
+  
+  .bg-hand {
+    height: 80%;
+    max-height: 700px;
+  }
+  
+  .bg-flower {
+    height: 55%;
+    max-height: 450px;
+  }
+  
+  .bg-skeleton {
+    height: 65%;
+    max-height: 550px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .home-title {
+    font-size: 100px;
+  }
+}

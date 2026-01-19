@@ -13,7 +13,10 @@
   <link rel="stylesheet" href="css/exhibit-nav.css" />
   <link rel="stylesheet" href="css/heart-viewer.css" />
   <link rel="stylesheet" href="css/accessibility.css" />
-  <link rel="stylesheet" href="css/home-background.css" />
+  <link rel="stylesheet" href="css/home-hero.css" />
+  <link rel="stylesheet" href="css/home-collection.css" />
+  <link rel="stylesheet" href="css/home-tour.css" />
+  <link rel="stylesheet" href="css/home-visist.css" />
   <link rel="stylesheet" href="css/prep.css" />
   <link rel="stylesheet" href="css/virtual-tour.css" />
   <link rel="stylesheet" href="css/interactive-map.css" />
@@ -74,8 +77,9 @@
         <a href="#" onclick="showExhibit('muscle','medical'); toggleMainMenu(); return false;">Muscle</a>
         <a href="#" onclick="showExhibit('fetus','medical'); toggleMainMenu(); return false;">Fetus</a>
       </div>
-
+      <a href="#" class="menu-item" onclick="showPage('quiz'); toggleMainMenu(); return false;">Quiz</a>
       <a href="#" class="menu-item" onclick="showPage('contact'); toggleMainMenu(); return false;">Contact Us</a>
+
     </nav>
   </div>
 
@@ -105,37 +109,85 @@
       <!-- Section 2: Before Visiting -->
       <section class="home-section home-section--visit">
         <div class="visit-content">
-          <div class="visit-image">
-            <img src="images/bodyHome.png" alt="Anatomical specimen display" />
-          </div>
-
           <div class="visit-text">
-            <h2>Will You Be Visiting the Museum in Person Soon?</h2>
-            <p>The museum contains real human remains used in medical education. We encourage quiet, respectful
-              behaviour and emotional awareness while visiting the museum. If you at any point feel unwell or
-              overwhelmed, don't hesitate to step out.</p>
+            <h2>Are you visiting the museum in person?</h2>
+            <p>The museum contains real human remains used in medical education. We encourage quiet, respectful behavior
+              and emotional awareness while visiting the museum. If you at any point feel unwell or overwhelmed, don't
+              hesitate to step out.</p>
             <a href="#" class="visit-link" onclick="showPage('disclaimer'); return false;">
-              Read about how to prepare and ethical guidelines
+              Read full preparation and ethics
+              <span class="arrow">→</span>
+            </a>
+          </div>
+          <div class="visit-image">
+            <img src="images/bodyHome.png" alt="Anatomical body scan" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Inside the Collection -->
+      <section class="home-section home-section--collection">
+        <div class="collection-content">
+          <div class="collection-image">
+            <img src="images/brain_Hana.png" alt="Anatomical head and neck scan" />
+          </div>
+          <div class="collection-text">
+            <h2>Inside the Anatomical Collection</h2>
+            <p>Hidden from public view for decades, NTNU's Anatomical Collection preserves real human and animal
+              specimens used in medical education. The collection reveals not only the structures of the body, but also
+              how society has understood illness, death, and anatomy across time.</p>
+            <a href="#" class="collection-link" onclick="showPage('disclaimer'); return false;">
+              Learn about the collection
               <span class="arrow">→</span>
             </a>
           </div>
         </div>
+      </section>
 
-        <!-- Footer with contact info -->
-        <div class="visit-footer">
-          <div class="footer-info">
-            <p><span>Address:</span> Erling Skjalgssons gate 1</p>
-            <p><span>Phone:</span> <a href="tel:72573100">72 57 31 00</a></p>
-            <p><span>Email:</span> <a href="mailto:info@ntnu.no">info@ntnu.no</a></p>
+      <!-- Section 4: Virtual Tour + Footer -->
+      <section class="home-section home-section--tour">
+        <div class="tour-content">
+          <div class="tour-text">
+            <a href="#" class="tour-link" onclick="showPage('Virtual-tour'); return false;">
+              Start the visual tour
+              <span class="arrow">→</span>
+            </a>
           </div>
-          <div class="footer-map">
-            <iframe width="600" height="450" style="border:0" loading="lazy" allowfullscreen
-              referrerpolicy="no-referrer-when-downgrade"
-              src="https://www.google.com/maps?q=63.41949,10.39078&z=17&output=embed">
-            </iframe>
-
+          <div class="tour-map">
+            <img src="images/map_museum.png" alt="Museum floor plan" />
           </div>
         </div>
+
+        <!-- Footer -->
+        <footer class="home-footer">
+          <div class="footer-brand">
+            <div class="footer-logo">PT</div>
+            <p>NTNU Anatomical collection</p>
+            <p>Faculty of Medicine and Health Sciences</p>
+            <p>St. Olavs Hospital</p>
+            <p class="copyright">© 2026 NTNU – All rights reserved</p>
+          </div>
+
+          <div class="footer-shortcuts">
+            <h3>Shortcuts</h3>
+            <a href="#" onclick="showPage('disclaimer'); return false;">Before visiting</a>
+            <a href="#" onclick="showPage('disclaimer'); return false;">About the collection</a>
+            <a href="#" onclick="showPage('Virtual-tour'); return false;">Virtual tour</a>
+            <a href="#" onclick="showExhibit('heart','medical'); return false;">The collection</a>
+            <a href="#" onclick="showPage('quiz'); return false;">Quiz</a>
+
+          </div>
+
+          <div class="footer-contact">
+            <h3>Contact us</h3>
+            <a href="mailto:pleasetrespass@ntnu.no">pleasetrespass@ntnu.no</a>
+            <div class="footer-map-small">
+              <iframe src="https://www.google.com/maps?q=63.41949,10.39078&z=15&output=embed" loading="lazy"
+                allowfullscreen referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </footer>
       </section>
 
     </div>
@@ -422,7 +474,6 @@
           </div>
         </div>
       </div>
-
     </div>
 
     <!-- ==================== SKELETON EXHIBIT ==================== -->
@@ -1061,7 +1112,12 @@
         <p>Content coming soon...</p>
       </div>
     </div>
-
+    <div id="quiz" class="page-content">
+      <div class="section">
+        <h2>Quiz</h2>
+        <p>Content coming soon...</p>
+      </div>
+    </div>
   </div>
 
   <!-- EXHIBIT NAVIGATION (shared across all exhibits) -->

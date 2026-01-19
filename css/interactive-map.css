@@ -2,15 +2,6 @@
    Interactive Museum Map
    =========================== */
 
-/* 
-   TUNING GUIDE:
-   Each button position is controlled by CSS custom properties.
-   Adjust --top and --left values (in percentages) to move buttons.
-   The percentage is relative to the map container size.
-   
-   Example: If a button is too far right, decrease its --left value.
-   Example: If a button is too low, decrease its --top value.
-*/
 
 .interactive-map {
   position: relative;
