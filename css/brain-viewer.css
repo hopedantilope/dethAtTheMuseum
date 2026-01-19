@@ -1,0 +1,217 @@
+/* ===========================
+   Brain 3D Viewer
+   =========================== */
+
+.brain-viewer {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 1rem 0;
+}
+
+.brain-viewer iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  background: #111;
+}
+
+/* Loading overlay */
+.brain-viewer .viewer-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: grid;
+  place-items: center;
+  background: rgba(0, 0, 0, 0.6);
+  transition: opacity 0.3s ease;
+}
+
+.brain-viewer .viewer-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.brain-viewer .viewer-loading {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #eaeaea;
+}
+
+/* ===========================
+   Annotation Buttons Panel
+   =========================== */
+
+.brain-viewer .annotation-panel {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  width: 200px;
+  max-height: calc(100% - 24px);
+  background: rgba(19, 19, 19, 0.92);
+  border: 1px solid #262626;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.brain-viewer .annotation-panel.hidden {
+  display: none;
+}
+
+.brain-viewer .annotation-header {
+  padding: 10px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #d4a574;
+  border-bottom: 1px solid #262626;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brain-viewer .annotation-toggle {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 4px;
+  font-size: 16px;
+  line-height: 1;
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+}
+
+.brain-viewer .annotation-toggle:hover {
+  opacity: 1;
+}
+
+.brain-viewer .annotation-list {
+  padding: 8px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  max-height: 280px;
+}
+
+.brain-viewer .annotation-btn {
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #2a2a2a;
+  background: #161616;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.brain-viewer .annotation-btn:hover {
+  border-color: #444;
+  background: #1e1e1e;
+}
+
+.brain-viewer .annotation-btn:active {
+  transform: translateY(1px);
+}
+
+.brain-viewer .annotation-btn .anno-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #eaeaea;
+  margin: 0;
+  font-family: "Georgia", serif;
+}
+
+.brain-viewer .annotation-btn .anno-index {
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 2px;
+}
+
+/* Collapsed state - just show toggle button */
+.brain-viewer .annotation-panel.collapsed {
+  width: auto;
+}
+
+.brain-viewer .annotation-panel.collapsed .annotation-header {
+  border-bottom: none;
+  padding: 8px 10px;
+}
+
+.brain-viewer .annotation-panel.collapsed .annotation-header span {
+  display: none;
+}
+
+.brain-viewer .annotation-panel.collapsed .annotation-list {
+  display: none;
+}
+
+/* No annotations message */
+.brain-viewer .annotation-empty {
+  padding: 12px;
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.6);
+  text-align: center;
+  font-style: italic;
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+
+@media (min-width: 768px) {
+  .brain-viewer {
+    height: 500px;
+  }
+  
+  .brain-viewer .annotation-panel {
+    width: 220px;
+  }
+}
+
+@media (max-width: 767px) {
+  .brain-viewer {
+    height: 350px;
+    border-radius: 0;
+    margin: 1rem 0 0 0;
+  }
+  
+  .brain-viewer .annotation-panel {
+    width: 160px;
+    top: 8px;
+    left: 8px;
+  }
+  
+  .brain-viewer .annotation-header {
+    padding: 8px 10px;
+    font-size: 11px;
+  }
+  
+  .brain-viewer .annotation-list {
+    padding: 6px;
+    gap: 4px;
+    max-height: 200px;
+  }
+  
+  .brain-viewer .annotation-btn {
+    padding: 8px;
+  }
+  
+  .brain-viewer .annotation-btn .anno-title {
+    font-size: 12px;
+  }
+}
