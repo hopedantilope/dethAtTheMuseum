@@ -22,6 +22,10 @@
   <link rel="stylesheet" href="css/interactive-map.css" />
   <link rel="stylesheet" href="css/search.css" />
   <link rel="stylesheet" href="css/brain-viewer.css" />
+  <link rel="stylesheet" href="css/about-base.css" />
+  <link rel="stylesheet" href="css/about-hero.css" />
+  <link rel="stylesheet" href="css/about-cards.css" />
+  <link rel="stylesheet" href="css/about-tour.css" />
 </head>
 
 <body>
@@ -141,7 +145,7 @@
             <p>Hidden from public view for decades, NTNU's Anatomical Collection preserves real human and animal
               specimens used in medical education. The collection reveals not only the structures of the body, but also
               how society has understood illness, death, and anatomy across time.</p>
-            <a href="#" class="collection-link" onclick="showPage('disclaimer'); return false;">
+            <a href="#" class="collection-link" onclick="showPage('about'); return false;">
               Learn about the collection
               <span class="arrow">→</span>
             </a>
@@ -181,11 +185,135 @@
           <div class="footer-shortcuts">
             <h3>Shortcuts</h3>
             <a href="#" onclick="showPage('disclaimer'); return false;">Before visiting</a>
-            <a href="#" onclick="showPage('disclaimer'); return false;">About the collection</a>
+            <a href="#" onclick="showPage('about'); return false;">About the collection</a>
             <a href="#" onclick="showPage('Virtual-tour'); return false;">Virtual tour</a>
             <a href="#" onclick="showExhibit('heart','medical'); return false;">The collection</a>
             <a href="#" onclick="showPage('quiz'); return false;">Quiz</a>
 
+          </div>
+
+          <div class="footer-contact">
+            <h3>Contact us</h3>
+            <a href="mailto:pleasetrespass@ntnu.no">pleasetrespass@ntnu.no</a>
+            <div class="footer-map-small">
+              <iframe src="https://www.google.com/maps?q=63.41949,10.39078&z=15&output=embed" loading="lazy"
+                allowfullscreen referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </div>
+        </footer>
+      </section>
+
+    </div>
+    <!-- ==================== ABOUT THE COLLECTION PAGE ==================== -->
+    <div id="about" class="page-content">
+
+      <!-- Hero Section -->
+      <section class="about-hero">
+        <div class="about-hero-content">
+          <div class="about-hero-text">
+            <nav class="about-breadcrumb">
+              <a href="#" onclick="showPage('home'); return false;">Home</a>
+              <span>/</span>
+              About the collection
+            </nav>
+            <h1>About the collection</h1>
+            <p>Hidden from public view for decades, NTNU's Anatomical Collection preserves real human and animal
+              specimens used in medical education. The collection reveals not only the structures of the body, but also
+              how society has understood illness, death, and anatomy across time</p>
+          </div>
+          <div class="about-hero-image">
+            <img src="images/about-heart.png" alt="Anatomical heart specimen" />
+          </div>
+        </div>
+        <div class="scroll-indicator"
+          onclick="document.querySelector('.home-section--visit').scrollIntoView({behavior: 'smooth'})">
+          <span>Scroll</span>
+          <div class="scroll-arrow"></div>
+        </div>
+      </section>
+
+      <!-- Cards Section -->
+      <section class="about-cards">
+        <div class="about-cards-container">
+          <div class="about-cards-grid" id="aboutCardsGrid">
+
+            <!-- Card 1: Education and access -->
+            <article class="about-card">
+              <div class="about-card-image">
+                <img src="images/about-education.png" alt="Skeletal anatomy specimen" />
+              </div>
+              <h3>Education and access</h3>
+              <p>Medical students, researchers and visiting high school classes use the collection to understand anatomy
+                in ways digital tools alone cannot replicate.</p>
+            </article>
+
+            <!-- Card 2: Ethics and respect -->
+            <article class="about-card">
+              <div class="about-card-image">
+                <img src="images/about-ethics.png" alt="Blue flower x-ray" />
+              </div>
+              <h3>Ethics and respect</h3>
+              <p>The collection contains real human remains. NTNU follows strict ethical guidelines to ensure respectful
+                care, informed use and transparency in educational settings.</p>
+            </article>
+
+            <!-- Card 3: Culture and the body -->
+            <article class="about-card">
+              <div class="about-card-image">
+                <img src="images/about-culture.png" alt="Skeletal x-ray" />
+              </div>
+              <h3>Culture and the body</h3>
+              <p>Anatomical collections raise questions about how societies understand death, illness and the human
+                body. The collection invites reflection, dialogue and empathy.</p>
+            </article>
+
+          </div>
+
+          <!-- Mobile swipe indicator dots -->
+          <div class="about-cards-indicator" id="aboutCardsIndicator">
+            <span class="indicator-dot active" data-index="0"></span>
+            <span class="indicator-dot" data-index="1"></span>
+            <span class="indicator-dot" data-index="2"></span>
+          </div>
+        </div>
+        <div class="scroll-indicator"
+          onclick="document.querySelector('.home-section--visit').scrollIntoView({behavior: 'smooth'})">
+          <span>Scroll</span>
+          <div class="scroll-arrow"></div>
+        </div>
+      </section>
+
+      <!-- Tour Section (uses home-tour.css) -->
+      <section class="home-section home-section--tour">
+        <div class="tour-content">
+          <div class="tour-text">
+            <a href="#" class="tour-link" onclick="showPage('Virtual-tour'); return false;">
+              Start the virtual tour
+              <span class="arrow">→</span>
+            </a>
+          </div>
+          <div class="tour-map">
+            <img src="images/map_museum.png" alt="Museum floor plan" />
+          </div>
+        </div>
+
+        <!-- Footer (uses home-tour.css) -->
+        <footer class="home-footer">
+          <div class="footer-brand">
+            <div class="footer-logo">PT</div>
+            <p>NTNU Anatomical collection</p>
+            <p>Faculty of Medicine and Health Sciences</p>
+            <p>St. Olavs Hospital</p>
+            <p class="copyright">© 2026 NTNU – All rights reserved</p>
+          </div>
+
+          <div class="footer-shortcuts">
+            <h3>Shortcuts</h3>
+            <a href="#" onclick="showPage('disclaimer'); return false;">Before visiting</a>
+            <a href="#" onclick="showPage('about'); return false;">About the collection</a>
+            <a href="#" onclick="showPage('Virtual-tour'); return false;">Virtual tour</a>
+            <a href="#" onclick="showExhibit('Quiz'); return false;">Quiz</a>
           </div>
 
           <div class="footer-contact">
@@ -795,7 +923,11 @@
           </div>
           <div class="section-content">
             <div class="section-content-inner">
-              <p>A 5-day old boy. He, along with his twin, were born 3 months prematurely. His twin had low muscle tone (hypotonic) and had a low heartrate but recovered quickly. Both twins were put on respirators. After 5 days, air started to leak from his air sacs into his lung tissue (pulmonary interstitial emphysema) and he developed increasing respiratory problems. The obduction showed bleeding the right side of his cerebellum. Many bleeds close to the brain’s ventricles were found (subependymal haemorrhages).</p>
+              <p>A 5-day old boy. He, along with his twin, were born 3 months prematurely. His twin had low muscle tone
+                (hypotonic) and had a low heartrate but recovered quickly. Both twins were put on respirators. After 5
+                days, air started to leak from his air sacs into his lung tissue (pulmonary interstitial emphysema) and
+                he developed increasing respiratory problems. The obduction showed bleeding the right side of his
+                cerebellum. Many bleeds close to the brain’s ventricles were found (subependymal haemorrhages).</p>
             </div>
           </div>
         </div>
@@ -1202,6 +1334,7 @@
   <script src="js/search.js"></script>
   <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
   <script src="js/brain-viewer.js"></script>
+  <script src="js/about-cards.js"></script>
 </body>
 
 </html>

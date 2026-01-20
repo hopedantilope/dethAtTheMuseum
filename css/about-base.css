@@ -1,0 +1,57 @@
+/* ===========================
+   About Page - Base/Container Styles
+   =========================== */
+
+/* When about is active, container needs to be full-width and full-height */
+.container:has(#about.active) {
+  max-width: none;
+  padding: 0;
+  height: calc(100vh - 52px);
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .container:has(#about.active) {
+    height: calc(100vh - 56px);
+  }
+}
+
+/* About page scroll container */
+#about.page-content {
+  padding: 0;
+  margin: 0;
+}
+
+#about.page-content.active {
+  display: block;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+/* Hide scrollbar but keep functionality */
+#about.page-content::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+#about.page-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ===========================
+   Mobile Adjustments
+   =========================== */
+
+@media (max-width: 767px) {
+  .container:has(#about.active) {
+    height: calc(100vh - 52px);
+    padding: 0 !important;
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+  }
+}
