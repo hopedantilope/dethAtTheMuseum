@@ -1,0 +1,73 @@
+/* ===========================
+   Back Arrow - Exhibit Pages
+   =========================== */
+
+.back-arrow {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  color: #fff;
+  text-decoration: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  gap: 0;
+}
+
+.back-arrow-icon {
+  display: flex;
+  align-items: center;
+  height: 24px;
+}
+
+/* Arrow head < */
+.back-arrow-icon::before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-left: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  transform: rotate(45deg);
+  margin-right: -2px;
+}
+
+/* Arrow line -- */
+.back-arrow-icon::after {
+  content: '';
+  width: 20px;
+  height: 2px;
+  background-color: #fff;
+}
+
+/* Show back arrow when on exhibit or about pages */
+.top-bar.show-back-arrow .back-arrow {
+  display: flex;
+}
+
+/* Hover effect */
+.back-arrow:hover .back-arrow-icon::before {
+  border-color: #d4a574;
+}
+
+.back-arrow:hover .back-arrow-icon::after {
+  background-color: #d4a574;
+}
+
+/* ===========================
+   Responsive
+   =========================== */
+
+@media (min-width: 768px) {
+  .back-arrow-icon::before {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .back-arrow-icon::after {
+    width: 24px;
+  }
+}

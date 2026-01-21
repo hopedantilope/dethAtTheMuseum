@@ -26,6 +26,7 @@
   <link rel="stylesheet" href="css/about-hero.css" />
   <link rel="stylesheet" href="css/about-cards.css" />
   <link rel="stylesheet" href="css/about-tour.css" />
+  <link rel="stylesheet" href="css/back-arrow.css" />
 </head>
 
 <body>
@@ -36,6 +37,12 @@
     <a href="#" class="logo" onclick="showPage('home'); return false;">
       <img src="images/logo.png" alt="PT Logo" class="logo-img" />
     </a>
+
+    <!-- Back arrow (centered, visible on exhibit/about/disclaimer pages) -->
+    <a href="#" class="back-arrow" aria-label="Go back">
+      <span class="back-arrow-icon"></span>
+    </a>
+
     <div class="top-bar-right">
       <button class="icon-btn search-btn" aria-label="Search">
         <img src="images/spyglass.png" alt="" class="icon-img" />
@@ -75,9 +82,9 @@
       </button>
       <div class="submenu">
         <a href="#" onclick="showExhibit('heart','medical'); toggleMainMenu(); return false;">Heart</a>
+        <a href="#" onclick="showExhibit('brain','medical'); toggleMainMenu(); return false;">Brain</a>
         <a href="#" onclick="showExhibit('skeleton','medical'); toggleMainMenu(); return false;">Skeleton</a>
         <a href="#" onclick="showExhibit('respiratory','medical'); toggleMainMenu(); return false;">Respiratory</a>
-        <a href="#" onclick="showExhibit('brain','medical'); toggleMainMenu(); return false;">Brain</a>
         <a href="#" onclick="showExhibit('muscle','medical'); toggleMainMenu(); return false;">Muscle</a>
         <a href="#" onclick="showExhibit('fetus','medical'); toggleMainMenu(); return false;">Fetus</a>
       </div>
@@ -1335,6 +1342,7 @@
   <script src="https://static.sketchfab.com/api/sketchfab-viewer-1.12.1.js"></script>
   <script src="js/brain-viewer.js"></script>
   <script src="js/about-cards.js"></script>
+  <script src="js/back-arrow.js"></script>
 </body>
 
 </html>
