@@ -25,8 +25,8 @@
   <link rel="stylesheet" href="css/about-base.css" />
   <link rel="stylesheet" href="css/about-hero.css" />
   <link rel="stylesheet" href="css/about-cards.css" />
-  <link rel="stylesheet" href="css/about-tour.css" />
   <link rel="stylesheet" href="css/back-arrow.css" />
+  <link rel="stylesheet" href="css/quiz.css" />
 </head>
 
 <body>
@@ -326,6 +326,8 @@
           <div class="footer-contact">
             <h3>Contact us</h3>
             <a href="mailto:pleasetrespass@ntnu.no">pleasetrespass@ntnu.no</a>
+            <p>St. Olavs Hospital</p>
+
             <div class="footer-map-small">
               <iframe src="https://www.google.com/maps?q=63.41949,10.39078&z=15&output=embed" loading="lazy"
                 allowfullscreen referrerpolicy="no-referrer-when-downgrade">
@@ -1057,17 +1059,27 @@
     <div id="disclaimer" class="page-content">
 
       <!-- Introduction Section -->
-      <div class="section">
-        <h2>Before You Visit</h2>
-        <p>The museum contains real human remains used in medical education. We encourage quiet, respectful behaviour
-          and emotional awareness while visiting. If you at any point feel unwell or overwhelmed, don't hesitate to step
-          out.</p>
-        <p>Understanding how our specimens are prepared can help you appreciate the scientific and artistic processes
-          involved in preserving the human body for education.</p>
-      </div>
-
-      <!-- Plastination Section -->
       <div class="section collapsible expanded">
+        <div class="section-header">
+          <h2>Before You Visit</h2>
+          <span class="section-toggle" aria-hidden="true"></span>
+        </div>
+
+        <div class="section-content">
+          <div class="section-content-inner">
+            <p>The museum contains real human remains used in medical education. We encourage quiet, respectful
+              behaviour
+              and emotional awareness while visiting. If you at any point feel unwell or overwhelmed, don't hesitate to
+              step
+              out.</p>
+            <p>Understanding how our specimens are prepared can help you appreciate the scientific and artistic
+              processes
+              involved in preserving the human body for education.</p>
+          </div>
+        </div>
+      </div>
+      <!-- Plastination Section -->
+      <div class="section collapsible">
         <div class="section-header">
           <h2>Plastination</h2>
           <span class="section-toggle" aria-hidden="true"></span>
@@ -1293,10 +1305,6 @@
       </div>
     </div>
     <div id="quiz" class="page-content">
-      <div class="section">
-        <h2>Quiz</h2>
-        <p>Content coming soon...</p>
-      </div>
     </div>
   </div>
 
@@ -1313,7 +1321,7 @@
         <div class="tab-icon">
           <img src="images/icon-disease.png" alt="">
         </div>
-        <span>Disiease</span>
+        <span>disease</span>
       </a>
       <a href="#" class="exhibit-tab" data-panel="reflections">
         <div class="tab-icon">
@@ -1343,6 +1351,7 @@
   <script src="js/brain-viewer.js"></script>
   <script src="js/about-cards.js"></script>
   <script src="js/back-arrow.js"></script>
+  <script src="js/quiz.js"></script>
 </body>
 
 </html>

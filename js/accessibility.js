@@ -1,204 +1,294 @@
-/* ===========================
-   Accessibility - Audio File Player
-   Plays uploaded audio files for each section
-   =========================== */
+// ===========================
+// Audio Reader - Section Text-to-Speech
+// ===========================
 
-(function initAccessibility() {
-  let currentAudio = null;
+(function() {
   let currentButton = null;
-
-  // Map section IDs to their audio files
-  const audioFiles = {
-    "home-about": "audio/home-about.mp3",
-    "home-hours": "audio/home-hours.mp3",
-    "skeleton": "audio/skeleton.mp3",
-    "respiratory": "audio/respiratory.mp3",
-    "nerve": "audio/nerve.mp3",
-    "gastrointestinal": "audio/gastrointestinal.mp3",
-    "urogenital": "audio/urogenital.mp3",
-    "muscle": "audio/muscle.mp3",
-    "fetus": "audio/fetus.mp3",
-    "heart-anatomy": "audio/heart-anatomy.mp3",
-    "heart-physiology": "audio/heart-physiology.mp3",
-    "heart-pulmonary": "audio/heart-pulmonary.mp3",
-    "heart-systemic": "audio/heart-systemic.mp3",
-    "heart-conduction": "audio/heart-conduction.mp3",
-    "heart-disease": "audio/heart-disease.mp3",
-    "heart-mi": "audio/heart-mi.mp3",
-    "heart-mi-symptoms": "audio/heart-mi-symptoms.mp3",
-    "heart-prevention": "audio/heart-prevention.mp3",
-    "heart-more-info": "audio/heart-more-info.mp3",
-    "heart-exhibition": "audio/heart-exhibition.mp3",
-    "heart-history": "audio/heart-history.mp3",
-    "heart-disease-panel": "audio/heart-disease-panel.mp3",
-    "heart-reflections": "audio/heart-reflections.mp3",
-    "disclaimer": "audio/disclaimer.mp3",
-    "contact": "audio/contact.mp3",
-  };
-
-  // Stop current audio
-  function stop() {
-    if (currentAudio) {
-      currentAudio.pause();
-      currentAudio.currentTime = 0;
-      currentAudio = null;
-    }
-    resetButton(currentButton);
-    currentButton = null;
+  
+  // Check if speech synthesis is supported
+  function isSupported() {
+    return 'speechSynthesis' in window;
   }
-
-  // Reset button to default state
-  function resetButton(btn) {
-    if (btn) {
-      btn.classList.remove("speaking");
-      btn.setAttribute("aria-pressed", "false");
-      btn.title = "Play audio";
+  
+  // Stop any current speech
+  function stopSpeech() {
+    if (isSupported()) {
+      window.speechSynthesis.cancel();
+    }
+    if (currentButton) {
+      currentButton.classList.remove('playing');
+      currentButton = null;
     }
   }
-
-  // Play audio for a section
-  function playAudio(audioId, button) {
-    const audioSrc = audioFiles[audioId];
-
-    // If clicking the same button that's playing, stop it
-    if (currentButton === button && currentAudio && !currentAudio.paused) {
-      stop();
+  
+  // Speak text
+  function speak(text, button) {
+    if (!isSupported()) {
+      alert("Sorry — text-to-speech isn't supported in this browser.");
       return;
     }
-
-    // Stop any currently playing audio
-    stop();
-
-    if (!audioSrc) {
-      console.warn(`No audio file mapped for: ${audioId}`);
-      showNoAudioMessage(button);
-      return;
-    }
-
-    // Create and play audio
-    currentAudio = new Audio(audioSrc);
-    currentButton = button;
-
-    // Update button state
-    button.classList.add("speaking");
-    button.setAttribute("aria-pressed", "true");
-    button.title = "Stop audio";
-
-    currentAudio.addEventListener("ended", () => {
-      resetButton(button);
-      currentAudio = null;
-      currentButton = null;
-    });
-
-    currentAudio.addEventListener("error", (e) => {
-      console.warn(`Audio file not found: ${audioSrc}`);
-      showNoAudioMessage(button);
-      resetButton(button);
-      currentAudio = null;
-      currentButton = null;
-    });
-
-    currentAudio.play().catch((e) => {
-      console.error("Audio playback failed:", e);
-      resetButton(button);
-    });
-  }
-
-  // Show message when audio file is missing
-  function showNoAudioMessage(button) {
-    const originalTitle = button.title;
-    button.title = "Audio not available";
-    button.classList.add("no-audio");
-
-    setTimeout(() => {
-      button.title = originalTitle;
-      button.classList.remove("no-audio");
-    }, 2000);
-  }
-
-  // Create a speak button
-  function createSpeakButton(audioId) {
-    const btn = document.createElement("button");
-    btn.className = "speak-btn";
-    btn.setAttribute("aria-label", "Play audio for this section");
-    btn.setAttribute("aria-pressed", "false");
-    btn.setAttribute("title", "Play audio");
-    btn.setAttribute("data-audio-id", audioId);
-    btn.type = "button";
-    btn.innerHTML = `
-      <svg class="icon-speaker" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-        <path class="sound-waves" d="M15.54 8.46a5 5 0 0 1 0 7.07M19.07 4.93a10 10 0 0 1 0 14.14"/>
-      </svg>
-      <svg class="icon-stop" viewBox="0 0 24 24" fill="currentColor">
-        <rect x="6" y="6" width="12" height="12" rx="1"/>
-      </svg>
-    `;
-
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      e.stopPropagation();
-      playAudio(audioId, btn);
-    });
-
-    return btn;
-  }
-
-  // Add speak buttons to all sections with data-audio-id
-  function addSpeakButtons() {
-    const sections = document.querySelectorAll(".section[data-audio-id]");
     
-    sections.forEach((section) => {
-      // Skip if button already exists
-      if (section.querySelector(".speak-btn")) return;
-
-      const audioId = section.getAttribute("data-audio-id");
-      if (!audioId) return;
-
-      const btn = createSpeakButton(audioId);
-      const header = section.querySelector("h2");
+    // If same button clicked while playing, stop
+    if (currentButton === button && window.speechSynthesis.speaking) {
+      stopSpeech();
+      return;
+    }
+    
+    // Stop any current speech
+    stopSpeech();
+    
+    // Create utterance
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1;
+    utterance.pitch = 1;
+    utterance.volume = 1;
+    utterance.lang = 'en-US'; // Force English language
+    
+    // Try to get an English voice
+    const voices = window.speechSynthesis.getVoices();
+    const englishVoice = voices.find(v => v.lang && (v.lang.startsWith('en-US') || v.lang.startsWith('en-GB') || v.lang.startsWith('en')));
+    if (englishVoice) {
+      utterance.voice = englishVoice;
+    }
+    
+    // Set current button and add playing class
+    currentButton = button;
+    button.classList.add('playing');
+    
+    // Handle end of speech
+    utterance.onend = function() {
+      if (currentButton === button) {
+        button.classList.remove('playing');
+        currentButton = null;
+      }
+    };
+    
+    utterance.onerror = function() {
+      if (currentButton === button) {
+        button.classList.remove('playing');
+        currentButton = null;
+      }
+    };
+    
+    // Speak
+    window.speechSynthesis.speak(utterance);
+  }
+  
+  // Get text content from a section
+  function getSectionText(section) {
+    const content = section.querySelector('.section-content-inner') || 
+                    section.querySelector('.section-content') ||
+                    section;
+    
+    if (!content) return '';
+    
+    // Clone to avoid modifying original
+    const clone = content.cloneNode(true);
+    
+    // Remove any audio buttons from clone
+    clone.querySelectorAll('.section-audio-btn').forEach(btn => btn.remove());
+    
+    // Get text content
+    return clone.innerText.trim();
+  }
+  
+  // Get text from home/about text containers
+  function getTextBlockContent(container) {
+    // Clone to avoid modifying original
+    const clone = container.cloneNode(true);
+    
+    // Remove audio buttons and links from clone
+    clone.querySelectorAll('.section-audio-btn, .visit-link, .collection-link, .about-tour-link, .tour-link').forEach(el => el.remove());
+    
+    // Get h2 and p text
+    let text = '';
+    const heading = clone.querySelector('h2, h1');
+    const paragraphs = clone.querySelectorAll('p');
+    
+    if (heading) text += heading.innerText + '. ';
+    paragraphs.forEach(p => {
+      text += p.innerText + ' ';
+    });
+    
+    return text.trim();
+  }
+  
+  // Create audio button element
+  function createAudioButton() {
+    const button = document.createElement('button');
+    button.className = 'section-audio-btn';
+    button.setAttribute('aria-label', 'Read section aloud');
+    button.innerHTML = '<img src="images/volume.png" alt="Read aloud" />';
+    return button;
+  }
+  
+  // Add audio button to a collapsible section
+  function addAudioButtonToSection(section) {
+    // Check if button already exists
+    if (section.querySelector('.section-audio-btn')) return;
+    
+    const header = section.querySelector('.section-header');
+    if (!header) return;
+    
+    const button = createAudioButton();
+    
+    // Insert before the toggle icon
+    const toggle = header.querySelector('.section-toggle');
+    if (toggle) {
+      header.insertBefore(button, toggle);
+    } else {
+      header.appendChild(button);
+    }
+    
+    // Click handler
+    button.addEventListener('click', function(e) {
+      e.stopPropagation(); // Don't trigger section collapse
       
-      if (header) {
-        header.appendChild(btn);
+      const text = getSectionText(section);
+      if (text) {
+        speak(text, button);
       }
     });
   }
-
-  // Stop audio when changing pages
-  function stopOnPageChange() {
-    if (window.showPage) {
-      const originalShowPage = window.showPage;
-      window.showPage = function (pageId, updateHash) {
-        stop();
-        return originalShowPage(pageId, updateHash);
-      };
+  
+  // Add audio button to home page text blocks (visit-text, collection-text)
+  function addAudioButtonToTextBlock(textBlock, getTextFn) {
+    // Check if button already exists
+    if (textBlock.querySelector('.section-audio-btn')) return;
+    
+    const button = createAudioButton();
+    
+    // Insert inside the heading (at the end)
+    const heading = textBlock.querySelector('h1, h2');
+    if (heading) {
+      heading.appendChild(button);
+    } else {
+      textBlock.insertBefore(button, textBlock.firstChild);
     }
+    
+    // Click handler
+    button.addEventListener('click', function(e) {
+      e.stopPropagation();
+      e.preventDefault();
+      
+      const text = getTextFn(textBlock);
+      if (text) {
+        speak(text, button);
+      }
+    });
   }
-
+  
+  // Initialize audio buttons on all sections
+  function initAudioButtons() {
+    // Collapsible sections (exhibits, disclaimer, etc.)
+    const sections = document.querySelectorAll('.section.collapsible');
+    sections.forEach(addAudioButtonToSection);
+    
+    // Home page text blocks
+    const visitTexts = document.querySelectorAll('.visit-text');
+    visitTexts.forEach(block => addAudioButtonToTextBlock(block, getTextBlockContent));
+    
+    const collectionTexts = document.querySelectorAll('.collection-text');
+    collectionTexts.forEach(block => addAudioButtonToTextBlock(block, getTextBlockContent));
+    
+    // About page hero text
+    const aboutHeroTexts = document.querySelectorAll('.about-hero-text');
+    aboutHeroTexts.forEach(block => addAudioButtonToTextBlock(block, getTextBlockContent));
+    
+    // About page cards
+    const aboutCards = document.querySelectorAll('.about-card');
+    aboutCards.forEach(card => {
+      if (card.querySelector('.section-audio-btn')) return;
+      
+      const button = createAudioButton();
+      
+      // Insert after the image
+      const image = card.querySelector('.about-card-image');
+      if (image) {
+        image.after(button);
+      } else {
+        card.insertBefore(button, card.firstChild);
+      }
+      
+      button.addEventListener('click', function(e) {
+        e.stopPropagation();
+        e.preventDefault();
+        
+        const h3 = card.querySelector('h3');
+        const p = card.querySelector('p');
+        let text = '';
+        if (h3) text += h3.innerText + '. ';
+        if (p) text += p.innerText;
+        
+        if (text) {
+          speak(text.trim(), button);
+        }
+      });
+    });
+  }
+  
+  // Stop speech when navigating away
+  function handlePageChange() {
+    stopSpeech();
+  }
+  
   // Initialize
   function init() {
-    addSpeakButtons();
-    stopOnPageChange();
-
-    // Stop when page is hidden
-    document.addEventListener("visibilitychange", () => {
-      if (document.hidden) stop();
+    if (!isSupported()) {
+      console.warn('Speech synthesis not supported');
+      return;
+    }
+    
+    // Load voices (some browsers load async)
+    window.speechSynthesis.onvoiceschanged = function() {
+      window.speechSynthesis.getVoices();
+    };
+    window.speechSynthesis.getVoices();
+    
+    // Add buttons to existing sections
+    initAudioButtons();
+    
+    // Stop speech on page navigation
+    window.addEventListener('hashchange', handlePageChange);
+    
+    // Observe for new sections being added (for SPA)
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        mutation.addedNodes.forEach(function(node) {
+          if (node.nodeType === 1) {
+            if (node.classList && node.classList.contains('section') && node.classList.contains('collapsible')) {
+              addAudioButtonToSection(node);
+            }
+            // Also check children
+            const childSections = node.querySelectorAll ? node.querySelectorAll('.section.collapsible') : [];
+            childSections.forEach(addAudioButtonToSection);
+          }
+        });
+      });
     });
-
-    window.addEventListener("beforeunload", stop);
+    
+    observer.observe(document.body, { childList: true, subtree: true });
+    
+    // Re-init when page becomes active (for SPA navigation)
+    document.querySelectorAll('.page-content').forEach(function(page) {
+      const pageObserver = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.attributeName === 'class' && page.classList.contains('active')) {
+            // Small delay to ensure content is rendered
+            setTimeout(initAudioButtons, 50);
+          }
+        });
+      });
+      pageObserver.observe(page, { attributes: true, attributeFilter: ['class'] });
+    });
   }
-
-  // Run on DOM ready
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+  
+  // Expose stop function globally
+  window.stopAudioReader = stopSpeech;
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
-
-  // Expose API
-  window.accessibility = {
-    play: playAudio,
-    stop: stop,
-    audioFiles: audioFiles,
-  };
 })();

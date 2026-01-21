@@ -110,7 +110,7 @@
 
 .map-hotspot--brain {
   --top: 63%;
-  --left: 30%;
+  --left: 29.5%;
   top: var(--top);
   left: var(--left);
 }
@@ -138,7 +138,7 @@
 
 .map-hotspot--fetus {
   --top: 22%;
-  --left: 36%;
+  --left: 36.5%;
   top: var(--top);
   left: var(--left);
 }
