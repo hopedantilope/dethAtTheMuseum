@@ -240,8 +240,8 @@
             <div class="quiz-results-title">Quiz Complete!</div>
             <div class="quiz-results-score">${score}/${quizData.length}</div>
             <div class="quiz-results-text">${message}</div>
-            <button class="quiz-restart-btn" onclick="quizRestart()">
-              Try Again
+            <button class="quiz-restart-btn" onclick="showPage('home')">
+              Back to home
               <span class="arrow">→</span>
             </button>
           </div>
