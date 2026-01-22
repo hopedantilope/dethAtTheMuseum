@@ -117,7 +117,6 @@
     quizContainer.innerHTML = `
       <div class="quiz-container">
         <div class="quiz-background">
-          <img src="images/lightning.jpg" alt="" />
         </div>
         
         <div class="quiz-left">
@@ -226,7 +225,6 @@
     quizContainer.innerHTML = `
       <div class="quiz-container">
         <div class="quiz-background">
-          <img src="images/lightning.png" alt="" />
         </div>
         
         <div class="quiz-left">          
