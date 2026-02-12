@@ -496,14 +496,3 @@
     padding: 10px 20px;
   }
 }
-
-.notice {
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.notice ul {
-  list-style-position: inside;
-  padding-left: 0;
-  margin-left: 0;
-}
